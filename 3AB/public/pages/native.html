@@ -29,27 +29,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         firebase.initializeApp(config);
     </script>
-
     <style>
-        .container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            padding-top: 56.25%;
-            /* 16:9 Aspect Ratio */
+        /* .second-row {
+            position: absolute;
+            top: 100px;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
         
-        .responsive-iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
+        .second-row iframe {
+            display: block;
             width: 100%;
             height: 100%;
             border: none;
-        }
+        } */
     </style>
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -249,10 +245,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <!-- <iframe src="PageCreator/index.html" class="nav-link">
-                                        <i class="nav-icon fa fa-magic"></i>
-                                        <p>Native</p>
-                                    </iframe> -->
+
                                     <a href="#" class="nav-link">
                                         <i class="nav-icon fa fa-magic"></i>
                                         <p>Native</p>
@@ -319,38 +312,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Native</h1>
-                        </div>
-                        <!-- /.col -->
-                        <!-- <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Starter Page</li>
-                            </ol>
-                        </div> -->
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.container-fluid -->
-            </div>
-            <!-- /.content-header -->
 
-            <!-- Main content -->
-            <div class="content">
-                <div class="container-fluid">
 
-                    <iframe class="responsive-iframe" src="../../PageCreator/"></iframe>
 
-                </div>
-                <!-- /.container-fluid -->
-            </div>
-            <!-- /.content -->
+
+
+
+            <iframe width="100%" height="690px" class="responsive-iframe" src="../../PageCreator/"></iframe>
+
+
+
         </div>
         <!-- /.content-wrapper -->
 
