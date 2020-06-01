@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+        crossorigin="anonymous">>
+
+
+    </script>
+    <title>Events</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+                <a class="navbar-brand" href="#">Verko</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Banners <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" data-gaCategory="Menu Clicked" data-gaAction="Javascript Menu Dropdown" data-gaLabel="jQuery Soup">Img1</a></li>
+                            <li><a href="#" data-gaCategory="Menu Clicked" data-gaAction="Javascript Menu Dropdown" data-gaLabel="Ember Salad">Img2</a></li>
+                            <li><a href="#" data-gaCategory="Menu Clicked" data-gaAction="Javascript Menu Dropdown" data-gaLabel="React BBQ">Img3</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" data-gaCategory="Menu Clicked" data-gaAction="Drinks Dropdown" data-gaLabel="Angular Coolaid">page1</a></li>
+                            <li><a href="#" data-gaCategory="Menu Clicked" data-gaAction="Drinks Dropdown" data-gaLabel="Mocha Cola">page2</a></li>
+                            <li><a href="#" data-gaCategory="Menu Clicked" data-gaAction="Drinks Dropdown" data-gaLabel="Bad to the Backbone">page3</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="container theme-showcase" role="main">
+
+        <div class="jumbotron">
+            <h1>Div-1</h1>
+            <h2>BUtton1</h2>
+            <button type="button" class="btn btn-lg btn-default btn-buy" data-gaCategory="Sale" data-gaAction="Purchase Item" data-gaLabel="Item 1" data-gaValue="10">Btn sample</button>
+        </div>
+
+
+    </div>
+
+
+    <div class="container theme-showcase">
+        <h1> Event Actvity</h1>
+        <textarea name="logs" id="logs" cols="100%" rows="10"></textarea>
+    </div>
+
+
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-68122300-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
