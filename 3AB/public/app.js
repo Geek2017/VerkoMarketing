@@ -9,12 +9,12 @@ angular
                 templateUrl: 'views/home.html',
                 controller: 'HomeCtrl'
             })
-            .when('/contacts', {
-                templateUrl: 'views/contacts.html',
+            .when('/custom', {
+                templateUrl: 'views/custom.html',
                 controller: 'ContactCtrl'
             })
-            .when('/about', {
-                templateUrl: 'views/about.html',
+            .when('/native', {
+                templateUrl: 'views/native.html',
                 controller: 'AboutCtrl'
             });
     });
