@@ -1,480 +1,72 @@
-<!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html lang="en">
+<div class="container-fluid">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- FILE PATH -->
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">File Path</h3>
 
-    <title>3A | Builder</title>
-    <link rel="stylesheet" href="../assets/libraries/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <!-- Bootstrap Color Picker -->
-
-    <link rel="stylesheet" href="../assets/libraries/dist/css/loader.css">
-    <!-- <style>
-        body {
-            background-color: #222;
-        }
-        
-        #preloader {
-            top: 80px;
-            right: 0;
-            width: 150px;
-            height: 150px;
-        }
-        
-        #loader {
-            display: block;
-            position: relative;
-            left: 50%;
-            top: 50%;
-            width: 150px;
-            height: 150px;
-            margin: -75px 0 0 -75px;
-            border-radius: 50%;
-            border: 3px solid transparent;
-            border-top-color: #9370DB;
-            -webkit-animation: spin 2s linear infinite;
-            animation: spin 2s linear infinite;
-        }
-        
-        #loader:before {
-            content: "";
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            right: 5px;
-            bottom: 5px;
-            border-radius: 50%;
-            border: 3px solid transparent;
-            border-top-color: #BA55D3;
-            -webkit-animation: spin 3s linear infinite;
-            animation: spin 3s linear infinite;
-        }
-        
-        #loader:after {
-            content: "";
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            right: 15px;
-            bottom: 15px;
-            border-radius: 50%;
-            border: 3px solid transparent;
-            border-top-color: #FF00FF;
-            -webkit-animation: spin 1.5s linear infinite;
-            animation: spin 1.5s linear infinite;
-        }
-        
-        @-webkit-keyframes spin {
-            0% {
-                -webkit-transform: rotate(0deg);
-                -ms-transform: rotate(0deg);
-                transform: rotate(0deg);
-            }
-            100% {
-                -webkit-transform: rotate(360deg);
-                -ms-transform: rotate(360deg);
-                transform: rotate(360deg);
-            }
-        }
-        
-        @keyframes spin {
-            0% {
-                -webkit-transform: rotate(0deg);
-                -ms-transform: rotate(0deg);
-                transform: rotate(0deg);
-            }
-            100% {
-                -webkit-transform: rotate(360deg);
-                -ms-transform: rotate(360deg);
-                transform: rotate(360deg);
-            }
-        }
-    </style> -->
-    <link rel="icon" href="../assets/libraries/dist/img/AdminLTELogo.png" sizes="16x16">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="../assets/libraries/plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../assets/libraries/dist/css/adminlte.min.css">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
-    <script>
-        var config = {
-            apiKey: "AIzaSyA-fqW8NmUfA6YIMMJ-HLRuTVRJtC7b6mw",
-            authDomain: "geocoord-1532713040637.firebaseapp.com",
-            databaseURL: "https://geocoord-1532713040637.firebaseio.com",
-            projectId: "geocoord-1532713040637"
-        };
-
-        firebase.initializeApp(config);
-    </script>
-</head>
-
-<body class="hold-transition sidebar-mini">
-    <div class="wrapper">
-
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li>
-            </ul>
-
-            <!-- SEARCH FORM -->
-            <form class="form-inline ml-3">
-                <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-navbar" type="submit">
-                  <i class="fas fa-search"></i>
-                </button>
-                    </div>
-                </div>
-            </form>
-
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Messages Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="../assets/libraries/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Brad Diesel
-                                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">Call me whenever you can...</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="../assets/libraries/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        John Pierce
-                                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">I got your message bro</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="../assets/libraries/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Nora Silvester
-                                        <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">The subject goes here</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                    </div>
-                </li>
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> 8 friend requests
-                            <span class="float-right text-muted text-sm">12 hours</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> 3 new reports
-                            <span class="float-right text-muted text-sm">2 days</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
-                  class="fas fa-th-large"></i></a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="fas fa-sliders-h"></i>
-
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header"><i class="far fa-question-circle fa-2x"></i></span>
-
-
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users"></i> Profile
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="./pages/examples/login.html" class="dropdown-item">
-                            <i class="fas fa-sign-out-alt"></i> Logout
-
-                        </a>
-
-                    </div>
-                </li>
-            </ul>
-        </nav>
-        <!-- /.navbar -->
-
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="../assets/libraries/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Verko Digital Mktg.</span>
-            </a>
-
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="../assets/libraries/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">Todd L.</a>
-                    </div>
-                </div>
-
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview menu-open">
-                            <a href="../index.html" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-
-                                </p>
-                            </a>
-
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon  fas fa-cogs"> </i>
-                                <p>
-                                    3A | Builder
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="nav-icon fa fa-gavel"></i>
-                                        <p>Custom</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../views/native.html" class="nav-link">
-                                        <i class="nav-icon fa fa-magic"></i>
-                                        <p>Native</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-fingerprint"></i>
-                                <p>
-                                    A.i
-                                    <i class="fas fa-angle-left right"></i>
-
-
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="nav-icon fas fa-robot"></i>
-                                        <p>Bot Only</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-
-                                        <i class="nav-icon far fa-lightbulb"></i>
-                                        <p>Machine Learn</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="nav-icon fas fa-bolt"></i>
-                                        <p>Deep Learn</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-clipboard-list"></i>
-                                <p>
-                                    Events Log
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Settings
-                                </p>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                <!-- <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button> -->
             </div>
-            <!-- /.sidebar -->
-        </aside>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <div class="row">
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Custom</h1>
-                        </div>
-                        <!-- /.col -->
-                        <!-- <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Starter Page</li>
-                            </ol>
-                        </div> -->
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
+                <!-- radio -->
+                <div class="custom-control custom-radio">
+                    <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio1" checked>
+                    <label for="customRadio1" class="custom-control-label">Default Path</label>
                 </div>
-                <!-- /.container-fluid -->
+                &nbsp;&nbsp;
+                <div class="custom-control custom-radio">
+                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio1">
+                    <label for="customRadio2" class="custom-control-label">Custom Path</label>
+                </div>
             </div>
-            <!-- /.content-header -->
 
-            <!-- Main content -->
-            <div class="content">
-                <div class="container-fluid">
+            <br><label for="basic-url">File Uploader</label>
+            <div style="display:none" id="defaultFile" class="input-group mb-3">
 
-                    <!-- FILE PATH -->
-                    <div class="card card-default">
-                        <div class="card-header">
-                            <h3 class="card-title">File Path</h3>
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">public_html/3AB/</span>
+                </div>
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            </div>
+            <div id="customFile" class="input-group mb-3">
 
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                <!-- <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button> -->
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <div class="row">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">public_html/custom/</span>
+                </div>
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            </div>
 
-                                <!-- radio -->
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio1" checked>
-                                    <label for="customRadio1" class="custom-control-label">Default Path</label>
-                                </div>
-                                &nbsp;&nbsp;
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio1">
-                                    <label for="customRadio2" class="custom-control-label">Custom Path</label>
-                                </div>
-                            </div>
+            <br>
 
-                            <br><label for="basic-url">File Uploader</label>
-                            <div style="display:none" id="defaultFile" class="input-group mb-3">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon01">Bot Path</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+            </div>
 
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon3">public_html/3AB/</span>
-                                </div>
-                                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-                            </div>
-                            <div id="customFile" class="input-group mb-3">
+            <br>
 
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon3">public_html/custom/</span>
-                                </div>
-                                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-                            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon01">Human Path</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+            </div>
 
-                            <br>
-
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroupFileAddon01">Bot Path</span>
-                                </div>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                </div>
-                            </div>
-
-                            <br>
-
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroupFileAddon01">Human Path</span>
-                                </div>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                </div>
-                            </div>
-
-                            <!-- <div class="input-group input-group">
+            <!-- <div class="input-group input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon3">Bot Path</span>
                                 </div>
@@ -494,399 +86,236 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </span>
                             </div> -->
 
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
 
 
 
-                    <!-- LOADER THEMES -->
-                    <div class="card card-default">
-                        <div class="card-header">
-                            <h3 class="card-title">Loader Themes</h3>
+    <!-- LOADER THEMES -->
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">Loader Themes</h3>
 
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                <!-- <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button> -->
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                <!-- <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button> -->
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <div class="row">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" id="theme1" name="customRadio2" checked>
+                                <label for="theme1" class="custom-control-label">Default</label>
+                                <br/><br/><br/><br/><br/>
+                                <div id="preloader">
+                                    <div id="loader"></div>
+                                </div>
+                                <br/><br/><br/><br/>
+
+                                <!-- Color Picker -->
+
+                                <div class="form-group">
+                                    <label>Color picker: Line 1</label>
+
+                                    <div class="input-group my-colorpicker2">
+                                        <input type="text" id="picker1" class="form-control">
+
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
+                                        </div>
+                                    </div>
+                                    <!-- /.input group -->
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Color picker: Line 2</label>
+
+                                    <div class="input-group my-colorpicker3">
+                                        <input type="text" class="form-control">
+
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
+                                        </div>
+                                    </div>
+                                    <!-- /.input group -->
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Color picker: Line 3</label>
+
+                                    <div class="input-group my-colorpicker4">
+                                        <input type="text" class="form-control">
+
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
+                                        </div>
+                                    </div>
+                                    <!-- /.input group -->
+                                </div>
+
+
+                                <button type="submit" id="save1" class="btn btn-primary">Save</button>
+
                             </div>
+                            <br>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <div class="row">
-
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-sm">
-                                            <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" id="theme1" name="customRadio2" checked>
-                                                <label for="theme1" class="custom-control-label">Default</label>
-                                                <br/><br/><br/><br/><br/>
-                                                <div id="preloader">
-                                                    <div id="loader"></div>
-                                                </div>
-                                                <br/><br/><br/><br/>
-
-                                                <!-- Color Picker -->
-
-                                                <div class="form-group">
-                                                    <label>Color picker: Line 1</label>
-
-                                                    <div class="input-group my-colorpicker2">
-                                                        <input type="text" id="picker1" class="form-control">
-
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.input group -->
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label>Color picker: Line 2</label>
-
-                                                    <div class="input-group my-colorpicker3">
-                                                        <input type="text" class="form-control">
-
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.input group -->
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label>Color picker: Line 3</label>
-
-                                                    <div class="input-group my-colorpicker4">
-                                                        <input type="text" class="form-control">
-
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.input group -->
-                                                </div>
-
-
-                                                <button type="submit" id="save1" class="btn btn-primary">Save</button>
-
-                                            </div>
-                                            <br>
+                        <div class="col-sm">
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" id="theme2" name="customRadio2">
+                                <label for="theme2" class="custom-control-label">Circle 1</label>
+                                <br/><br/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="loader4">
+                                            <span class="loader loader-1"></span>
+                                            <span class="loader loader-2"></span>
+                                            <span class="loader loader-3"></span>
+                                            <span class="loader loader-4"></span>
                                         </div>
-                                        <div class="col-sm">
-                                            <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" id="theme2" name="customRadio2">
-                                                <label for="theme2" class="custom-control-label">Circle 1</label>
-                                                <br/><br/>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div id="loader4">
-                                                            <span class="loader loader-1"></span>
-                                                            <span class="loader loader-2"></span>
-                                                            <span class="loader loader-3"></span>
-                                                            <span class="loader loader-4"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                    </div>
+                                </div>
 
-                                                <br/><br/><br/><br/>
+                                <br/><br/><br/><br/>
 
-                                                <!-- Color Picker -->
-                                                <div class="form-group">
-                                                    <label>Color picker: Circle 1</label>
+                                <!-- Color Picker -->
+                                <div class="form-group">
+                                    <label>Color picker: Circle 1</label>
 
-                                                    <div class="input-group my-colorpicker5">
-                                                        <input type="text" class="form-control">
+                                    <div class="input-group my-colorpicker5">
+                                        <input type="text" class="form-control">
 
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.input group -->
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label>Color picker: Circle 2</label>
-
-                                                    <div class="input-group my-colorpicker6">
-                                                        <input type="text" class="form-control">
-
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.input group -->
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label>Color picker: Circle 3</label>
-
-                                                    <div class="input-group my-colorpicker7">
-                                                        <input type="text" class="form-control">
-
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.input group -->
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label>Color picker: Circle 4</label>
-
-                                                    <div class="input-group my-colorpicker8">
-                                                        <input type="text" class="form-control">
-
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.input group -->
-                                                </div>
-
-                                                <button type="submit" id="save1" class="btn btn-primary">Save</button>
-                                            </div>
-                                            <br>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
                                         </div>
+                                    </div>
+                                    <!-- /.input group -->
+                                </div>
 
-                                        <div class="col-sm">
-                                            <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" id="theme3" name="customRadio2">
-                                                <label for="theme3" class="custom-control-label">Circle 2</label>
-                                                <br/><br/>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="preloader1">
-                                                            <div class="loader loader-inner-1">
-                                                                <div class="loader loader-inner-2">
-                                                                    <div class="loader loader-inner-3">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                <div class="form-group">
+                                    <label>Color picker: Circle 2</label>
+
+                                    <div class="input-group my-colorpicker6">
+                                        <input type="text" class="form-control">
+
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
+                                        </div>
+                                    </div>
+                                    <!-- /.input group -->
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Color picker: Circle 3</label>
+
+                                    <div class="input-group my-colorpicker7">
+                                        <input type="text" class="form-control">
+
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
+                                        </div>
+                                    </div>
+                                    <!-- /.input group -->
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Color picker: Circle 4</label>
+
+                                    <div class="input-group my-colorpicker8">
+                                        <input type="text" class="form-control">
+
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
+                                        </div>
+                                    </div>
+                                    <!-- /.input group -->
+                                </div>
+
+                                <button type="submit" id="save1" class="btn btn-primary">Save</button>
+                            </div>
+                            <br>
+                        </div>
+
+                        <div class="col-sm">
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" id="theme3" name="customRadio2">
+                                <label for="theme3" class="custom-control-label">Circle 2</label>
+                                <br/><br/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="preloader1">
+                                            <div class="loader loader-inner-1">
+                                                <div class="loader loader-inner-2">
+                                                    <div class="loader loader-inner-3">
                                                     </div>
                                                 </div>
-
-                                                <br/><br/><br/><br/>
-
-                                                <!-- Color Picker -->
-                                                <div class="form-group">
-                                                    <label>Color picker:</label>
-
-                                                    <div class="input-group my-colorpicker9">
-                                                        <input type="text" class="form-control">
-
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.input group -->
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label>Color picker: Line 2</label>
-
-                                                    <div class="input-group my-colorpicker10">
-                                                        <input type="text" class="form-control">
-
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label>Color picker: Line 3</label>
-
-                                                    <div class="input-group my-colorpicker11">
-                                                        <input type="text" class="form-control">
-
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-                                                <button type="submit" id="save1" class="btn btn-primary">Save</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <br/><br/><br/><br/>
+
+                                <!-- Color Picker -->
+                                <div class="form-group">
+                                    <label>Color picker:</label>
+
+                                    <div class="input-group my-colorpicker9">
+                                        <input type="text" class="form-control">
+
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
+                                        </div>
+                                    </div>
+                                    <!-- /.input group -->
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Color picker: Line 2</label>
+
+                                    <div class="input-group my-colorpicker10">
+                                        <input type="text" class="form-control">
+
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Color picker: Line 3</label>
+
+                                    <div class="input-group my-colorpicker11">
+                                        <input type="text" class="form-control">
+
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-square"></i></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <button type="submit" id="save1" class="btn btn-primary">Save</button>
                             </div>
-
-
-
                         </div>
-                        <!-- /.card-body -->
                     </div>
-                    <!-- /.card -->
-
-
-                    <!-- /.row -->
                 </div>
-                <!-- /.container-fluid -->
             </div>
-            <!-- /.content -->
+
+
+
         </div>
-        <!-- /.content-wrapper -->
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-            <div class="p-3">
-                <h5>Title</h5>
-                <p>Sidebar content</p>
-            </div>
-        </aside>
-        <!-- /.control-sidebar -->
-
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <!-- To the right -->
-            <div class="float-right d-none d-sm-inline">
-                Lets take the next step together!
-            </div>
-            <!-- Default to the left -->
-            <strong>Copyright &copy; 2014-2020 <a href="https://verkomarketing.com/">verkomarketing.com</a>.</strong> All rights reserved.
-        </footer>
+        <!-- /.card-body -->
     </div>
-    <!-- ./wrapper -->
-
-    <!-- REQUIRED SCRIPTS -->
-
-    <!-- jQuery -->
+    <!-- /.card -->
 
 
-    <script src="../assets/libraries/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../assets/libraries/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../assets/libraries/dist/js/adminlte.min.js"></script>
-    <!-- bootstrap color picker -->
-    <script src="../assets/libraries/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-
-    <!-- OPTIONAL SCRIPTS -->
-    <script src="../assets/libraries/plugins/chart.js/Chart.min.js"></script>
-    <script src="../assets/libraries/dist/js/demo.js"></script>
-    <script src="../assets/libraries/dist/js/pages/dashboard3.js"></script>
-    <script>
-        $(function() {
-
-            $("#save1").click(function() {
-                console.log(document.getElementById('picker1').value);
-            });
-
-            if (document.getElementById('customRadio1').checked) {
-                //Male radio button is checked
-                console.log("default");
-                $("#customFile").hide();
-                $("#defaultFile").show();
-            } else if (document.getElementById('customRadio2').checked) {
-                //Female radio button is checked
-                console.log("custom");
-                $("#defaultFile").hide();
-                $("#customFile").show();
-            }
-
-            // if ($("#customRadio1").is(":checked")) {
-            //     console.log("default");
-            //     $("#customFile").hide();
-            //     $("#defaultFile").show();
-            // }
-            // if ($("#customRadio2").is(":checked")) {
-            //     console.log("custom");
-            //     $("#defaultFile").hide();
-            //     $("#customFile").show();
-            // }
-
-            //Colorpicker
-            $('.my-colorpicker1').colorpicker()
-                //color picker with addon default
-            $('.my-colorpicker2').colorpicker()
-
-            $('.my-colorpicker2').on('colorpickerChange', function(event) {
-                $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-            });
-
-            $('.my-colorpicker3').colorpicker()
-
-            $('.my-colorpicker3').on('colorpickerChange', function(event) {
-                $('.my-colorpicker3 .fa-square').css('color', event.color.toString());
-            });
-
-            $('.my-colorpicker4').colorpicker()
-
-            $('.my-colorpicker4').on('colorpickerChange', function(event) {
-                $('.my-colorpicker4 .fa-square').css('color', event.color.toString());
-            });
-
-            //color picker with addon circle
-            $('.my-colorpicker5').colorpicker()
-
-            $('.my-colorpicker5').on('colorpickerChange', function(event) {
-                $('.my-colorpicker5 .fa-square').css('color', event.color.toString());
-            });
-
-            $('.my-colorpicker6').colorpicker()
-
-            $('.my-colorpicker6').on('colorpickerChange', function(event) {
-                $('.my-colorpicker6 .fa-square').css('color', event.color.toString());
-            });
-
-            $('.my-colorpicker7').colorpicker()
-
-            $('.my-colorpicker7').on('colorpickerChange', function(event) {
-                $('.my-colorpicker7 .fa-square').css('color', event.color.toString());
-            });
-
-            $('.my-colorpicker8').colorpicker()
-
-            $('.my-colorpicker8').on('colorpickerChange', function(event) {
-                $('.my-colorpicker8 .fa-square').css('color', event.color.toString());
-            });
-
-            //color picker with addon circle2
-            $('.my-colorpicker9').colorpicker()
-
-            $('.my-colorpicker9').on('colorpickerChange', function(event) {
-                $('.my-colorpicker9 .fa-square').css('color', event.color.toString());
-            });
-
-            $('.my-colorpicker10').colorpicker()
-
-            $('.my-colorpicker10').on('colorpickerChange', function(event) {
-                $('.my-colorpicker10 .fa-square').css('color', event.color.toString());
-            });
-
-            $('.my-colorpicker11').colorpicker()
-
-            $('.my-colorpicker11').on('colorpickerChange', function(event) {
-                $('.my-colorpicker11 .fa-square').css('color', event.color.toString());
-            });
-
-            $("input[data-bootstrap-switch]").each(function() {
-                $(this).bootstrapSwitch('state', $(this).prop('checked'));
-            });
-
-        })
-    </script>
-    <!-- <script>
-        $(document).ready(function() {
-            if ($("#customRadio1").is(":checked")) {
-                console.log("default");
-                $("#customFile").hide();
-                $("#defaultFile").show();
-            }
-            if ($("#customRadio2").is(":checked")) {
-                console.log("custom");
-                $("#defaultFile").hide();
-                $("#customFile").show();
-            }
-        });
-    </script> -->
-</body>
-
-</html>
+    <!-- /.row -->
+</div>
