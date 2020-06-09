@@ -1,5 +1,5 @@
 angular.module('newApp').controller('CustomCtrl', function($scope) {
-    alert(123)
+
 
 
     $("#save1").click(function() {

