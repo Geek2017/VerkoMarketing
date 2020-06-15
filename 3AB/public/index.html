@@ -49,6 +49,11 @@
             if (user) {
 
                 console.log(user);
+                var temp = firebase.auth().currentUser.photoURL;
+                // console.log(firebase.auth().currentUser.photoURL);
+                // console.log(firebase.auth().currentUser.displayName);
+                document.getElementById("photoURL").src = temp;
+                document.getElementById("username").innerHTML = firebase.auth().currentUser.displayName;
 
             } else {
                 // console.log(window.location.pathname);
@@ -218,11 +223,12 @@
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+
                     <div class="image">
-                        <img src="assets/libraries/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img id="photoURL" src="assets/libraries/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Todd L.</a>
+                        <a href="#" class="d-block" id="username"></a>
                     </div>
                 </div>
 
