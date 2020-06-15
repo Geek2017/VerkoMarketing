@@ -8,7 +8,8 @@ angular.module('newApp').controller('DashboardCtrl', function($scope) {
 
         } else {
             console.log(window.location.pathname);
-            window.location.pathname = '/3AB/public/login.html';
+            // window.location.pathname = '/3AB/public/login.html';
+            window.location.href = './index.html';
         }
     });
 });

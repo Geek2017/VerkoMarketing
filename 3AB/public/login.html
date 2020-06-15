@@ -9,13 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../public/assets/libraries/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="./assets/libraries/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="../public/assets/libraries/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/libraries/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../public/assets/libraries/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="./assets/libraries/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- Firebase -->
@@ -214,11 +214,11 @@
     </div>
 
     <!-- jQuery -->
-    <script src="../public/assets/libraries/plugins/jquery/jquery.min.js"></script>
+    <script src="./assets/libraries/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="../public/assets/libraries/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/libraries/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="../public/assets/libraries/dist/js/adminlte.min.js"></script>
+    <script src="./assets/libraries/dist/js/adminlte.min.js"></script>
 
     <script>
         $('#btnToRegister').click(function() {
@@ -281,7 +281,8 @@
             firebase.auth().signInWithEmailAndPassword(email, password)
                 .then(function(user) {
                     // console.log(user.uid);
-                    window.location.pathname = '/3AB/public/index.html';
+                    // window.location.pathname = '/3AB/public/index.html';
+                    window.location.href = './index.html';
                 })
                 .catch(function(error) {
                     console.log(error);
@@ -295,7 +296,8 @@
             firebase.auth()
 
             .signInWithPopup(provider).then(function(result) {
-                window.location.pathname = '/3AB/public/index.html';
+                // window.location.pathname = '/3AB/public/index.html';
+                window.location.href = './index.html';
                 var token = result.credential.accessToken;
                 var user = result.user;
 
@@ -314,7 +316,8 @@
             firebase.auth()
 
             .signInWithPopup(provider).then(function(result) {
-                window.location.pathname = '/3AB/public/index.html';
+                // window.location.pathname = '/3AB/public/index.html';
+                window.location.href = './index.html';
                 var token = result.credential.accessToken;
                 var user = result.user;
 
