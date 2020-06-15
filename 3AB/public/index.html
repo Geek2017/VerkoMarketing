@@ -335,6 +335,8 @@
             <!-- /.sidebar -->
         </aside>
 
+
+
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <div class="row-fluid" ng-view></div>
@@ -374,16 +376,15 @@
     <script src="./assets/libraries/dist/js/adminlte.min.js"></script>
 
     <!-- OPTIONAL SCRIPTS -->
-    <script src="./assets/libraries/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-
     <script src="./assets/libraries/plugins/chart.js/Chart.min.js"></script>
     <script src="./assets/libraries/dist/js/demo.js"></script>
     <script src="./assets/libraries/dist/js/pages/dashboard3.js"></script>
+    <script src="./assets/libraries/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 
 
     <script src="app.js"></script>
     <!-- must be below AngularJS imports -->
-    <script src="controllers/home.js"></script>
+    <!-- <script src="controllers/home.js"></script> -->
     <script src="controllers/DashboardCtrl.js"></script>
     <script src="controllers/CustomCtrl.js"></script>
     <script src="controllers/BotOnlyCtrl.js"></script>
@@ -394,7 +395,8 @@
     <script>
         function signout() {
             firebase.auth().signOut().then(function() {
-                console.log("Logged out!")
+                console.log("Logged out!");
+                window.location.href = './index.html';
             }, function(error) {
                 console.log(error.code);
                 console.log(error.message);
