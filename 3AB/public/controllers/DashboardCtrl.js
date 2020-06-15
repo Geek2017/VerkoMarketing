@@ -1,5 +1,14 @@
 'use strict';
 
 angular.module('newApp').controller('DashboardCtrl', function($scope) {
-    console.log('123');
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+
+            console.log(user);
+
+        } else {
+            console.log(window.location.pathname);
+            window.location.pathname = '/3AB/public/login.html';
+        }
+    });
 });
