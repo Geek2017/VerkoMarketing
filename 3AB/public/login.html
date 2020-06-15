@@ -46,6 +46,9 @@
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
 
+                <div class="text-danger wrapper text-center" id="messages"></div>
+                <br>
+
                 <form action="./index3.html" method="post">
                     <div class="input-group mb-3">
                         <input type="email" class="form-control" id="emailSignIn" placeholder="Email">
@@ -111,6 +114,9 @@
         <div class="card">
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register a new membership</p>
+
+                <div class="text-danger wrapper text-center" id="messages2"></div>
+                <br>
 
                 <form action="../../index.html" method="post">
                     <div class="input-group mb-3">
@@ -188,6 +194,9 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
+
+                <div class="text-danger wrapper text-center" id="messages3"></div>
+                <br>
 
                 <form action="" method="post">
                     <div class="input-group mb-3">
@@ -269,16 +278,22 @@
                     $('#registerStyle').hide();
                     $('#forgotStyle').hide();
                     $('#loginStyle').show();
-                    username = "";
-                    email = "";
-                    password = "";
+                    document.getElementById("username").innerHTML = " ";
+                    document.getElementById("email").innerHTML = " ";
+                    document.getElementById("password").innerHTML = " ";
+                    window.location.href = './index.html';
+                    // username = "";
+                    // email = "";
+                    // password = "";
                 }).catch(function(error) {
                     console.log(error.code);
                     console.log(error.message);
+                    document.getElementById("messages2").innerHTML = error.message;
                 });
         }
 
         function signin() {
+            // $scope.errorMessage = false;
             // var auth = $firebase.auth();
             var email = $('#emailSignIn').val()
             var password = $('#passwordSignIn').val()
@@ -290,6 +305,7 @@
                 })
                 .catch(function(error) {
                     console.log(error);
+                    document.getElementById("messages").innerHTML = error.message;
                 });
             // console.log($('#username').val());
         }
@@ -344,12 +360,15 @@
             firebase.auth().sendPasswordResetEmail(email).then(function() {
                     // $scope.user.resetEmail = "";
                     // $scope.authError = 'A reset link sent to your email address. It will expire after 2 hours.';
+                    document.getElementById("messages3").innerHTML = "A reset link sent to your email address. It will expire after 2 hours.";
                     console.log('A reset link sent to your email address. It will expire after 2 hours.');
+                    document.getElementById("forgotEmail").innerHTML = " ";
                 })
                 .catch(function(error) {
                     // $scope.authError = true;
                     // $scope.authError = error.message;
                     console.log(error);
+                    document.getElementById("messages3").innerHTML = error.message;
                 });
 
         }
