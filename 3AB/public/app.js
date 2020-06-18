@@ -8,7 +8,7 @@ angular
                 controller: 'DashboardCtrl'
             })
             .when('/custom', {
-                templateUrl: 'views/Custom.html',
+                templateUrl: 'views/custom.html',
                 controller: 'CustomCtrl'
             })
             .when('/native', {

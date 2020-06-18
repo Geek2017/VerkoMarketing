@@ -1,22 +1,120 @@
 angular.module('newApp').controller('CustomCtrl', function($scope) {
+    $(document).ready(function() {
 
+        load_folder_list();
 
+        function load_folder_list() {
+            var action = "fetch";
+            $.ajax({
+                url: "action.php",
+                method: "POST",
+                data: {
+                    action: action
+                },
+                success: function(data) {
+                    $('#folder_table').html(data);
+                }
+            })
+        }
 
-    $("#save1").click(function() {
-        console.log(document.getElementById('picker1').value);
+        $(document).on('click', '#create_folder', function() {
+            $('#action').val('create');
+            $('#folder_name').val('');
+            $('#folder_button').val('Create');
+            $('#old_name').val('');
+            $('#change_title').text('Create Folder');
+            $('#folderModal').modal('show');
+        });
+
+        $(document).on('click', '#folder_button', function() {
+            var folder_name = $('#folder_name').val();
+            var action = $('#action').val();
+            if (folder_name != '') {
+                $.ajax({
+                    url: "action.php",
+                    method: "POST",
+                    data: {
+                        folder_name: folder_name,
+                        action: action
+                    },
+                    success: function(data) {
+                        $('#folderModal').modal('hide');
+                        load_folder_list();
+                        alert(data);
+                    }
+                });
+            } else {
+                alert("Enter Folder Name");
+            }
+        });
+
     });
 
-    if (document.getElementById('customRadio1').checked) {
-        //Male radio button is checked
-        console.log("default");
+    // $("#create_folder").click(function() {
+    //     $.get("test.php");
+    //     // console.log('successully created!')
+    //     return false;
+
+    // });
+
+
+    $("#default_folder").click(function() {
+        // $.get("copy.php");
+        // // console.log('successully created!')
+        // return false;
+
+        $.ajax({
+            url: "copy.php",
+            method: "POST",
+            data: {
+                copy: "copy"
+            },
+            success: function(data) {
+                console.log(data);
+                console.log("success");
+            }
+        })
+
+    });
+
+
+    // $.ajax({
+    //     url: 'test.php',
+    //     success: function(response) { //response is value returned from php (for your example it's "bye bye"
+    //         //alert(response);
+    //         console.log(response);
+    //     }
+    // });
+
+    $("#save1").click(function() {
+        // console.log(document.getElementById('picker1').value);
+        // $.get("test.php");
+        // return false;
+
+    });
+
+    $("#customRadio1").click(function() {
+        // console.log("default");
         $("#customFile").hide();
         $("#defaultFile").show();
-    } else if (document.getElementById('customRadio2').checked) {
-        //Female radio button is checked
-        console.log("custom");
+    });
+    $("#customRadio2").click(function() {
+        // console.log("custom");
         $("#defaultFile").hide();
         $("#customFile").show();
-    }
+    });
+
+    // if (document.getElementById('customRadio1').checked) {
+    //     console.log("default");
+    //     $("#customFile").hide();
+    //     $("#defaultFile").show();
+    // } else if (document.getElementById('customRadio2').checked) {
+    //     console.log("custom");
+    //     $("#defaultFile").hide();
+    //     $("#customFile").show();
+    // }
+
+    // document.getElementById("field07").setAttribute("disabled", false);
 
 
     $('.my-colorpicker1').colorpicker()
