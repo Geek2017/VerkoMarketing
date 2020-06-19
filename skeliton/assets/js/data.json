@@ -1,0 +1,5 @@
+{
+    "id": 1,
+    "bot": "./assets/ads/human.html",
+    "human": "./assets/ads/bot.html"
+}
