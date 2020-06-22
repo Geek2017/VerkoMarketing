@@ -1,21 +1,23 @@
 angular.module('newApp').controller('CustomCtrl', function($scope) {
     $(document).ready(function() {
 
-        // load_folder_list();
+        load_folder_list();
 
-        // function load_folder_list() {
-        //     var action = "fetch";
-        //     $.ajax({
-        //         url: "action.php",
-        //         method: "POST",
-        //         data: {
-        //             action: action
-        //         },
-        //         success: function(data) {
-        //             $('#folder_table').html(data);
-        //         }
-        //     })
-        // }
+        function load_folder_list() {
+            var action = "fetch";
+            $.ajax({
+                url: "action.php",
+                method: "POST",
+                data: {
+                    action: action
+                },
+                success: function(data) {
+                    $('#folder_table').html(data);
+                }
+            })
+        }
+
+
 
         $(document).on('click', '#create_folder', function() {
             $('#action').val('create');
@@ -42,6 +44,8 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                         $('#folderModal').modal('hide');
                         load_folder_list();
                         alert(data);
+                        localStorage.setItem("botpath", folder_name + "/assets/ads/bot.html");
+                        localStorage.setItem("humanpath", folder_name + "/assets/ads/human.html");
                     }
                 });
             } else {

@@ -12,7 +12,8 @@ angular
                 controller: 'CustomCtrl'
             })
             .when('/native', {
-                templateUrl: 'views/native.html'
+                templateUrl: 'views/native.html',
+                controller: 'NativeCtrl'
             })
             .when('/bot', {
                 templateUrl: 'views/Bot.html',
