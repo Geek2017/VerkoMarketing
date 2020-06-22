@@ -12,4 +12,9 @@ angular.module('newApp').controller('DashboardCtrl', function($scope) {
     //         window.location.href = './index.html';
     //     }
     // });
+
+    $scope.botclicks = '100';
+    $scope.humanclicks = '10';
+
+    // alert($scope.botclicks)
 });
