@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <input value="click" type="button" id="button">
+</body>
+<script>
+    $.getJSON("./json.json", function(data) {
+        // now data is JSON converted to an object / array for you to use.
+        console.log(data) // Tim Robbins, Morgan Freeman, Bob Gunton
+
+        var apath = [{
+                "id": 1,
+                "bot ": 'JMG12',
+                "human ": 'JMG12'
+            }] // a new movie object
+
+        var data = [];
+        data.push(apath);
+
+        console.log(data)
+        $("#button").click(function() {
+            var newData = JSON.stringify(data);
+            jQuery.post('./save.php', {
+                newData: newData
+            }, function(response) {
+                console.log(response)
+            })
+        });
+    });
+
+    // newData = JSON.stringify(data);
+</script>
+
+</html>
