@@ -1,6 +1,27 @@
 <?php 
 $copy = $_POST['copy'];
-mkdir("../../test");
+$folder = $_POST["folder_name"];
+// mkdir("test");
+
+$nfodler="../../" . $folder;
+$createJS = "../../" . $folder . "/js";
+$createHTML = "../../" . $folder . "/html";
+$createADS = "../../" . $folder . "/ads";
+$createCSS = "../../" . $folder . "/css";
+// echo $nfodler;
+
+if($_POST["action"] == "create"){
+    if(!file_exists($_POST["folder_name"])){
+        mkdir($nfodler, 0777, true);
+        mkdir($createJS, 0777, true);
+        // mkdir($createHTML, 0777, true);
+        mkdir($createADS, 0777, true);
+        mkdir($createCSS, 0777, true);
+        echo 'Folder Created';
+    } else {
+        echo 'Folder Already Created';
+    }
+}
 
 if ($copy == "copy"){
     function custom_copy($src, $dst) {  
@@ -96,15 +117,15 @@ if ($copy == "copy"){
 
     $src = "../../skeliton/assets/js"; 
       
-    $dst = "../../Copy/js"; 
+    $dst = $createJS; 
 
     $src2 = "../../skeliton/assets/css"; 
       
-    $dst2 = "../../Copy/css"; 
+    $dst2 = $createCSS; 
 
-    $src3 = "../../skeliton/assets/html"; 
+    $src3 = "../../skeliton/assets/ads"; 
       
-    $dst3 = "../../Copy/html"; 
+    $dst3 = $createADS; 
       
     custom_copy($src, $dst); 
     custom_copy2($src2, $dst2); 

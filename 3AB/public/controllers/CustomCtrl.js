@@ -1,21 +1,21 @@
 angular.module('newApp').controller('CustomCtrl', function($scope) {
     $(document).ready(function() {
 
-        load_folder_list();
+        // load_folder_list();
 
-        function load_folder_list() {
-            var action = "fetch";
-            $.ajax({
-                url: "action.php",
-                method: "POST",
-                data: {
-                    action: action
-                },
-                success: function(data) {
-                    $('#folder_table').html(data);
-                }
-            })
-        }
+        // function load_folder_list() {
+        //     var action = "fetch";
+        //     $.ajax({
+        //         url: "action.php",
+        //         method: "POST",
+        //         data: {
+        //             action: action
+        //         },
+        //         success: function(data) {
+        //             $('#folder_table').html(data);
+        //         }
+        //     })
+        // }
 
         $(document).on('click', '#create_folder', function() {
             $('#action').val('create');
@@ -31,11 +31,12 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
             var action = $('#action').val();
             if (folder_name != '') {
                 $.ajax({
-                    url: "action.php",
+                    url: "copy.php",
                     method: "POST",
                     data: {
                         folder_name: folder_name,
-                        action: action
+                        action: action,
+                        copy: "copy"
                     },
                     success: function(data) {
                         $('#folderModal').modal('hide');
