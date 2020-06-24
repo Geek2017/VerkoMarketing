@@ -1,4 +1,44 @@
 angular.module('newApp').controller('CustomCtrl', function($scope) {
+
+    var adType = "5Sec";
+    var loader = "default";
+    var folder = "";
+
+    //radio button functions
+    $("#theme1").click(function() {
+        adType = "5Sec"
+            // console.log(adType);
+    });
+    $("#theme2").click(function() {
+        adType = "Loader"
+            // console.log(adType);
+    });
+    $("#theme3").click(function() {
+        adType = "ReadMore"
+            // console.log(adType);
+    });
+
+    $("#theme4").click(function() {
+        loader = "Default"
+            // console.log(loader);
+    });
+    $("#theme5").click(function() {
+        loader = "Circle 1"
+            // console.log(loader);
+    });
+    $("#theme6").click(function() {
+        loader = "Circle 2"
+            // console.log(loader);
+    });
+
+    //for confirmModal
+    $("#redirect").click(function() {
+        $('#confirmModal').modal('hide');
+        setTimeout(function() { window.location.href = "#native"; }, 1000);
+
+
+    });
+
     $(document).ready(function() {
 
         load_folder_list();
@@ -29,23 +69,68 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
         });
 
         $(document).on('click', '#folder_button', function() {
+            $('#action').val('create');
+            $('#old_name').val('');
+            $('#folder_button').val('Create');
             var folder_name = $('#folder_name').val();
             var action = $('#action').val();
+
+
             if (folder_name != '') {
                 $.ajax({
                     url: "copy.php",
                     method: "POST",
                     data: {
+                        adType: adType,
+                        loader: loader,
                         folder_name: folder_name,
                         action: action,
                         copy: "copy"
                     },
                     success: function(data) {
-                        $('#folderModal').modal('hide');
+                        // $('#folderModal').modal('hide');
                         load_folder_list();
                         alert(data);
+                        $('#folder_name').val("");
+                        $('#botPathText').val("public_html/3AB/" + folder_name + "/assets/ads/bot.html");
+                        $('#humanPathText').val("public_html/3AB/" + folder_name + "/assets/ads/human.html");
+                        $('#confirmModal').modal('show');
                         localStorage.setItem("botpath", folder_name + "/assets/ads/bot.html");
                         localStorage.setItem("humanpath", folder_name + "/assets/ads/human.html");
+                    }
+                });
+            } else {
+                alert("Enter Folder Name");
+            }
+        });
+
+        $(document).on('click', '#folder_button2', function() {
+            $('#action2').val('create');
+            $('#old_name2').val('');
+            $('#folder_button2').val('Create');
+            var folder_name = $('#folder_name2').val();
+            var action = $('#action2').val();
+            if (folder_name != '') {
+                $.ajax({
+                    url: "copy2.php",
+                    method: "POST",
+                    data: {
+                        adType: adType,
+                        loader: loader,
+                        folder_name: folder_name,
+                        action: action,
+                        copy: "copy"
+                    },
+                    success: function(data) {
+                        // $('#folderModal').modal('hide');
+                        load_folder_list();
+                        alert(data);
+                        $('#folder_name2').val("");
+                        folder = folder_name;
+                        $('#botPathName2').text("public_html/" + folder_name + "/assets/ads/");
+                        $('#humanPathName2').text("public_html/" + folder_name + "/assets/ads/");
+                        localStorage.setItem("botpath", folder_name + "/assets/ads/");
+                        localStorage.setItem("humanpath", folder_name + "/assets/ads/");
                     }
                 });
             } else {
@@ -63,24 +148,24 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
     // });
 
 
-    $("#default_folder").click(function() {
-        // $.get("copy.php");
-        // // console.log('successully created!')
-        // return false;
+    // $("#default_folder").click(function() {
+    //     // $.get("copy.php");
+    //     // // console.log('successully created!')
+    //     // return false;
 
-        $.ajax({
-            url: "copy.php",
-            method: "POST",
-            data: {
-                copy: "copy"
-            },
-            success: function(data) {
-                console.log(data);
-                console.log("success");
-            }
-        })
+    //     $.ajax({
+    //         url: "copy.php",
+    //         method: "POST",
+    //         data: {
+    //             copy: "copy"
+    //         },
+    //         success: function(data) {
+    //             console.log(data);
+    //             console.log("success");
+    //         }
+    //     })
 
-    });
+    // });
 
 
     // $.ajax({
@@ -98,15 +183,106 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
 
     });
 
+    //radio button for Default File
     $("#customRadio1").click(function() {
-        // console.log("default");
         $("#customFile").hide();
         $("#defaultFile").show();
+
+        $("#botPath2").hide();
+        $("#humanPath2").hide();
+        $("#botPath1").show();
+        $("#humanPath1").show();
+        $("#botBrowse").hide();
+        $("#humanBrowse").hide();
+        // $("#botPathText").prop("disabled", true);
+        // $("#humanPathText").prop("disabled", true);
+
     });
+    //radio button for Custom File
     $("#customRadio2").click(function() {
-        // console.log("custom");
         $("#defaultFile").hide();
         $("#customFile").show();
+
+        $("#botPath1").hide();
+        $("#humanPath1").hide();
+        $("#botBrowse").show();
+        $("#humanBrowse").show();
+        // $("#botPathText").prop("disabled", false);
+        // $("#humanPathText").prop("disabled", false);
+    });
+
+    $("#botFileBtn").click(function() {
+
+        if (localStorage.getItem("botpath") && localStorage.getItem("humanpath")) {
+            console.log("You're allowed!");
+            if (document.getElementById("botFile").files.length == 0) {
+                console.log("no files selected");
+            } else {
+                console.log("files selected");
+                console.log(document.getElementById("botFile").files[0].name);
+                $("#labelID").text(document.getElementById("botFile").files[0].name);
+                $("#botPath2").show();
+            }
+        } else {
+            console.log("You're not allowed!");
+            // window.location.href = "#custom";
+        }
+
+    });
+
+    $("#humanFileBtn").click(function() {
+        if (document.getElementById("humanFile").files.length == 0) {
+            console.log("no files selected");
+        } else {
+            console.log("files selected");
+            console.log(document.getElementById("humanFile").files[0].name);
+            $("#labelID2").text(document.getElementById("humanFile").files[0].name);
+            $("#humanPath2").show();
+        }
+    });
+
+    $("#botFileSave").click(function() {
+
+        var bot_name = $('#botPathText2').val();
+        if (bot_name == "") {
+            console.log("Enter your bot html file");
+        } else {
+            console.log("Saved");
+            localStorage.setItem("botpath", folder + "/assets/ads/" + bot_name);
+        }
+
+
+    });
+
+    $("#humanFileSave").click(function() {
+        var human_name = $('#humanPathText2').val();
+        if (human_name == "") {
+            console.log("Enter your human html file");
+        } else {
+            console.log("Saved");
+            localStorage.setItem("humanpath", folder + "/assets/ads/" + human_name);
+        }
+
+    });
+
+
+
+    $("#theme1").click(function() {
+        document.getElementById("h3Tag").innerHTML = " ";
+        $("#loader2").hide();
+        $("#loaderTheme").hide();
+    });
+
+    $("#theme2").click(function() {
+        document.getElementById("h3Tag").innerHTML = "Choose Loader Themes";
+        $("#loader2").show();
+        $("#loaderTheme").show();
+    });
+
+    $("#theme3").click(function() {
+        document.getElementById("h3Tag").innerHTML = " ";
+        $("#loader2").hide();
+        $("#loaderTheme").hide();
     });
 
     // if (document.getElementById('customRadio1').checked) {

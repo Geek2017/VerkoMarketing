@@ -3,11 +3,11 @@ $copy = $_POST['copy'];
 $folder = $_POST["folder_name"];
 // mkdir("test");
 
-$nfodler="../" . $folder;
-$createJS = "../" . $folder . "/js";
-$createHTML = "../" . $folder . "/html";
-$createADS = "../" . $folder . "/ads";
-$createCSS = "../" . $folder . "/css";
+$nfodler="../../" . $folder;
+$createJS = "../../" . $folder . "/js";
+$createHTML = "../../" . $folder . "/html";
+$createADS = "../../" . $folder . "/ads";
+$createCSS = "../../" . $folder . "/css";
 // echo $nfodler;
 
 if($_POST["action"] == "create"){
@@ -22,8 +22,6 @@ if($_POST["action"] == "create"){
         echo 'Folder Already Created';
     }
 }
-
-
 
 if ($copy == "copy"){
     function custom_copy($src, $dst) {  

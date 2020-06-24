@@ -1,115 +1,15 @@
+<style>
+    .responsive {
+        width: 100%;
+        height: auto;
+    }
+</style>
 <div class="container-fluid">
 
-    <!-- FILE PATH -->
+    <!-- Ad Type -->
     <div class="card card-default">
         <div class="card-header">
-            <h3 class="card-title">File Path</h3>
-
-            <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                <!-- <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button> -->
-            </div>
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-            <div class="row">
-
-                <!-- radio -->
-                <div class="custom-control custom-radio">
-                    <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio1" checked>
-                    <label for="customRadio1" class="custom-control-label">Default Path</label>
-                </div>
-                &nbsp;&nbsp;
-                <div class="custom-control custom-radio">
-                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio1">
-                    <label for="customRadio2" class="custom-control-label">Custom Path</label>
-                </div>
-            </div>
-
-            <br><label for="basic-url">File Uploader</label>
-            <div id="defaultFile" class="input-group mb-3">
-
-                <div style="display: block;" class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon3">public_html/3AB/</span>
-                </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-                <button type="button" name="default_folder" id="default_folder" class="btn btn-success btn-flat" style="float: right;">Go</button>
-            </div>
-            <div style="display: none;" id="customFile" class="input-group mb-3">
-                <!-- <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon3">public_html/</span>
-                </div>
-                <input type="text" class="form-control" name="folder_name_custom" id="folder_name_custom" aria-describedby="basic-addon3"> -->
-                <!-- <input type="hidden" name="action" id="action">
-                <input type="hidden" name="old_name" id="old_name"> -->
-                <button type="button" name="create_folder" id="create_folder" class="btn btn-success btn-flat" style="float: right;">Create Folder</button>
-
-                <br>
-                <div id="folder_table" class="table-responsive">
-
-                </div>
-
-            </div>
-
-
-
-
-
-            <br>
-
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupFileAddon01">Bot Path</span>
-                </div>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                </div>
-            </div>
-
-            <br>
-
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupFileAddon01">Human Path</span>
-                </div>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                </div>
-            </div>
-
-            <!-- <div class="input-group input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon3">Bot Path</span>
-                                </div>
-                                <input type="file" class="form-control">
-                                <span class="input-group-append">
-                                  <button type="button" class="btn btn-info btn-flat">Find!</button>
-                                </span>
-                            </div>
-
-                            <div class="input-group input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon3">Human Path</span>
-                                </div>
-                                <input type="file" class="form-control">
-                                <span class="input-group-append">
-                                  <button type="button" class="btn btn-info btn-flat">Find!</button>
-                                </span>
-                            </div> -->
-
-        </div>
-        <!-- /.card-body -->
-    </div>
-    <!-- /.card -->
-
-
-
-    <!-- LOADER THEMES -->
-    <div class="card card-default">
-        <div class="card-header">
-            <h3 class="card-title">Loader Themes</h3>
+            <h3 class="card-title">Ad Type</h3>
 
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
@@ -125,7 +25,69 @@
                         <div class="col-sm">
                             <div class="custom-control custom-radio">
                                 <input class="custom-control-input" type="radio" id="theme1" name="customRadio2" checked>
-                                <label for="theme1" class="custom-control-label">Default</label>
+                                <label for="theme1" class="custom-control-label">5 Seconds</label>
+                                <br/><br/><br/><br/><br/>
+
+                                <img src="./assets/img/5Sec.png" alt="5Sec" class="responsive" width="400" height="350">
+
+
+                                <!-- <button type="submit" id="save1" class="btn btn-primary">Save</button> -->
+
+                            </div>
+                            <br>
+                        </div>
+                        <div class="col-sm">
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" id="theme2" name="customRadio2">
+                                <label for="theme2" class="custom-control-label">Loader</label>
+                                <br/><br/><br/><br/><br/>
+
+                                <img src="./assets/img/Loader.png" alt="Loader" class="responsive" width="400" height="350">
+
+                                <!-- <button type="submit" id="save2" class="btn btn-primary">Save</button> -->
+                            </div>
+                            <br>
+                        </div>
+
+                        <div class="col-sm">
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" id="theme3" name="customRadio2">
+                                <label for="theme3" class="custom-control-label">Read more...</label>
+                                <br/><br/><br/><br/><br/>
+
+                                <img src="./assets/img/ReadMore.png" alt="Loader" class="responsive" width="400" height="350">
+
+                                <!-- <button type="submit" id="save3" class="btn btn-primary">Save</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+
+
+    <!-- LOADER THEMES -->
+    <div style="display: none;" id="loaderTheme" class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title" id="h3Tag"> </h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body" style="display: none;" id="loader2">
+            <div class="row">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" id="theme4" name="customRadio3" checked>
+                                <label for="theme4" class="custom-control-label">Default</label>
                                 <br/><br/><br/><br/><br/>
                                 <div id="preloader">
                                     <div id="loader"></div>
@@ -181,8 +143,8 @@
                         </div>
                         <div class="col-sm">
                             <div class="custom-control custom-radio">
-                                <input class="custom-control-input" type="radio" id="theme2" name="customRadio2">
-                                <label for="theme2" class="custom-control-label">Circle 1</label>
+                                <input class="custom-control-input" type="radio" id="theme5" name="customRadio3">
+                                <label for="theme5" class="custom-control-label">Circle 1</label>
                                 <br/><br/>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -257,8 +219,8 @@
 
                         <div class="col-sm">
                             <div class="custom-control custom-radio">
-                                <input class="custom-control-input" type="radio" id="theme3" name="customRadio2">
-                                <label for="theme3" class="custom-control-label">Circle 2</label>
+                                <input class="custom-control-input" type="radio" id="theme6" name="customRadio3">
+                                <label for="theme6" class="custom-control-label">Circle 2</label>
                                 <br/><br/>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -329,11 +291,203 @@
     </div>
     <!-- /.card -->
 
+    <!-- FILE PATH -->
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">File Path</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                <!-- <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button> -->
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <div class="row">
+
+                <!-- radio -->
+                <div class="custom-control custom-radio">
+                    <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio1" checked>
+                    <label for="customRadio1" class="custom-control-label">Default Path</label>
+                </div>
+                &nbsp;&nbsp;
+                <div class="custom-control custom-radio">
+                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio1">
+                    <label for="customRadio2" class="custom-control-label">Custom Path</label>
+                </div>
+            </div>
+
+            <br><label for="basic-url">File Uploader</label>
+            <div id="defaultFile" class="input-group mb-3">
+
+                <div style="display: block;" class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">public_html/3AB/</span>
+                </div>
+                <input type="text" class="form-control" name="folder_name" id="folder_name" aria-describedby="basic-addon3" placeholder="Enter the name of your folder">
+                <input type="hidden" name="action" id="action">
+                <input type="hidden" name="old_name" id="old_name">
+                <button type="button" name="folder_button" id="folder_button" class="btn btn-success btn-flat" style="float: right;">Create Folder</button>
+                <!-- <button type="button" name="default_folder" id="default_folder" class="btn btn-success btn-flat" style="float: right;">Go</button> -->
+            </div>
+            <div style="display: none;" id="customFile" class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">public_html/</span>
+                </div>
+                <input type="text" class="form-control" name="folder_name2" id="folder_name2" aria-describedby="basic-addon3" placeholder="Enter the name of your folder">
+                <input type="hidden" name="action2" id="action2">
+                <input type="hidden" name="old_name2" id="old_name2">
+                <button type="button" name="folder_button2" id="folder_button2" class="btn btn-success btn-flat" style="float: right;">Create Folder</button>
+
+                <br>
+                <div id="folder_table" class="table-responsive">
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <br>
+
+            <div class="input-group" id="botPath1">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="botPathName">Bot Path</span>
+                </div>
+                <input type="text" class="form-control" name="botPathText" id="botPathText" aria-describedby="basic-addon3" disabled>
+
+            </div>
+
+            <br>
+
+            <div class="input-group" id="humanPath1">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="humanPathName">Human Path</span>
+                </div>
+                <input type="text" class="form-control" name="humanPathText" id="humanPathText" aria-describedby="basic-addon3" disabled>
+            </div>
+
+            <!-- <div>
+                <input type="file" id="botFile" name="botFile">
+            </div> -->
+
+            <!-- <div class="form-group">
+                <label for="exampleInputFile">Bot File</label>
+                <div class="input-group">
+                    <input type="file" id="botFile" name="botFile">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="botFile" name="botFile">
+                        <label id="labelID" class="custom-file-label" for="exampleInputFile">Choose file and Click Upload</label>
+                    </div>
+                    <div class="input-group-append">
+                        <button type="button" name="botFileBtn" id="botFileBtn" class="btn btn-success" style="float: right;">Upload</button>
+                    </div>
+                </div>
+            </div> -->
+
+            <div style="display: none;" id="botBrowse" class="input-group">
+                <label for="exampleInputFile">Upload Bot File (zip/rar format)</label>
+                <div class="input-group">
+                    <!-- <input type="file" id="botFile" name="botFile"> -->
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="botFile" name="botFile">
+                        <label id="labelID" class="custom-file-label" for="exampleInputFile">Choose file and Click Upload</label>
+                    </div>
+                    <div class="input-group-append">
+                        <button type="button" name="botFileBtn" id="botFileBtn" class="btn btn-success" style="float: right;">Upload</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div style="display: none;" id="botPath2" class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="botPathName2">Bot Path</span>
+                </div>
+                <div class="custom-file">
+                    <input type="text" class="form-control" name="botPathText2" id="botPathText2" aria-describedby="basic-addon3" placeholder="Enter the name of your bot html file (e.g bot.html, adsBot.html)">
+                    <button type="button" name="botFileSave" id="botFileSave" class="btn btn-danger" style="float: right;">Save</button>
+                </div>
+            </div>
+            <br>
+
+
+            <div style="display: none;" id="humanBrowse" class="input-group">
+                <label for="exampleInputFile">Upload Human File (zip/rar format)</label>
+                <div class="input-group">
+                    <!-- <input type="file" id="botFile" name="botFile"> -->
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="humanFile" name="humanFile">
+                        <label id="labelID2" class="custom-file-label" for="exampleInputFile">Choose file and Click Upload</label>
+                    </div>
+                    <div class="input-group-append">
+                        <button type="button" name="humanFileBtn" id="humanFileBtn" class="btn btn-success" style="float: right;">Upload</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div style="display: none;" id="humanPath2" class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="humanPathName2">Human Path</span>
+                </div>
+                <div class="custom-file">
+                    <input type="text" class="form-control" name="humanPathText2" id="humanPathText2" aria-describedby="basic-addon3" placeholder="Enter the name of your human html file (e.g human.html, adsHuman.html)">
+                    <button type="button" name="humanFileSave" id="humanFileSave" class="btn btn-danger" style="float: right;">Save</button>
+                </div>
+            </div>
+
+
+            <!-- <div class="input-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon3">Bot Path</span>
+                                </div>
+                                <input type="file" class="form-control">
+                                <span class="input-group-append">
+                                  <button type="button" class="btn btn-info btn-flat">Find!</button>
+                                </span>
+                            </div>
+
+                            <div class="input-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon3">Human Path</span>
+                                </div>
+                                <input type="file" class="form-control">
+                                <span class="input-group-append">
+                                  <button type="button" class="btn btn-info btn-flat">Find!</button>
+                                </span>
+                            </div> -->
+
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+
+
 
 
 </div>
 
-<div id="folderModal" class="modal fade" role="dialog">
+<div id="confirmModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><span id="change_title">Redirect</span></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <p>Do you want to redirect to the Native Page?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" name="redirect" id="redirect" data-dismiss="modal">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div id="folderModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -355,7 +509,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- <script type="text/javascript">
     function createFolder() {
