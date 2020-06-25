@@ -131,6 +131,7 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                         $('#humanPathName2').text("public_html/" + folder_name + "/assets/ads/");
                         localStorage.setItem("botpath", folder_name + "/assets/ads/");
                         localStorage.setItem("humanpath", folder_name + "/assets/ads/");
+                        // document.cookie = folder_name + "/assets/ads/";
                     }
                 });
             } else {
@@ -212,6 +213,9 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
     });
 
     $("#botFileBtn").click(function() {
+        // console.log(document.cookie);
+
+        // document.cookie = "expires=Fri, 27 June 2020 00:00:00 UTC; path=/;";
 
         if (localStorage.getItem("botpath") && localStorage.getItem("humanpath")) {
             console.log("You're allowed!");
@@ -222,6 +226,28 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                 console.log(document.getElementById("botFile").files[0].name);
                 $("#labelID").text(document.getElementById("botFile").files[0].name);
                 $("#botPath2").show();
+
+                var file_name = document.getElementById("botFile").files[0];
+
+                if (file_name != '') {
+                    var form_data = new FormData();
+                    form_data.append("botFile", file_name);
+                    $.ajax({
+                        url: "up.php",
+                        method: "POST",
+                        data: form_data,
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success: function(data) {
+                            console.log(data);
+                        }
+                    });
+
+                } else {
+                    console.log("Can't Upload!");
+                }
+
             }
         } else {
             console.log("You're not allowed!");
@@ -240,6 +266,7 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
             $("#humanPath2").show();
         }
     });
+
 
     $("#botFileSave").click(function() {
 
