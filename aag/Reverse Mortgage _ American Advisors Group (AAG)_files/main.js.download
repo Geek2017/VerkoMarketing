@@ -1,0 +1,324 @@
+(function () {
+    'use strict';
+    window.addEventListener('load', function () {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+})();
+var $ = jQuery;
+var clicked = false;
+/* mobile menu animation */
+$(".hamburger, .main-navigation-mobile .close, #site-overlay").click(function(){
+	$('#site-overlay').toggle();
+	if($(document.body).css('overflow')=='hidden'){
+        $(document.body).css({'overflow':'auto','position':'static', 'width':'auto'});
+	}else{
+        $(document.body).css({'overflow':'hidden', 'position':'fixed', 'width':'100%'});
+	}
+	$('.main-navigation-mobile').toggle('slide', {direction:'left'});
+});
+$(".main-navigation-mobile .menu-item").click(function(e){
+    e.stopPropagation();
+    if($(this).hasClass('menu-item-has-children')) {
+        e.preventDefault();
+
+        if ($(this).hasClass('current-menu-parent')) {
+            $(this).children('.sub-menu').slideUp(400, function() {
+                $(this).parent().removeClass('current-menu-parent');
+            });
+        } else {
+            $( ".main-navigation-mobile .parent_menu.current-menu-parent" ).children('.sub-menu').slideUp(400, function() {
+                $(this).parent().removeClass('current-menu-parent');
+            });
+
+            $(this).children('.sub-menu').slideDown();
+            $(this).addClass('current-menu-parent');   
+        }
+    }
+});
+/* end mobile menu animation */
+
+/* main search bar animation */
+$(".search_trigger").bind('keyup click', function(e) {
+  if (e.type == "keyup" && e.keyCode == 13) {
+    if($(".search-bar #search_field").val().length == 0 && !clicked){
+          clicked = true;
+      $('.search-bar').toggle('slide', {direction:'right'}, function(){
+              clicked = false;
+          });
+    }
+  }
+  else if (e.type == "click") {
+    if($(".search-bar #search_field").val().length == 0 && !clicked){
+      clicked = true;
+      $('.search-bar').toggle('slide', {direction:'right'}, function(){
+              clicked = false;
+          });
+    }
+  }
+});
+/* end main search bar animation */
+
+/* timeline animation */
+var flag = true;
+$( ".btn-right" ).bind('keyup click', function(e) {
+  if (e.type == "keyup" && e.keyCode == 13) {
+    if(flag && parseInt($( ".timeline-img" ).css('margin-left')) > (($( ".timeline-img" ).width() - $( ".timeline-img-container" ).width())*-1)){
+      flag = false;
+      $( ".timeline-img" ).animate({ "margin-left": "-="+$( ".timeline-img-container" ).width()+"px" }, "slow", function(){
+        flag = true;
+      });
+    }
+  }
+  else if (e.type == "click") {
+    if(flag && parseInt($( ".timeline-img" ).css('margin-left')) > (($( ".timeline-img" ).width() - $( ".timeline-img-container" ).width())*-1)){
+      flag = false;
+      $( ".timeline-img" ).animate({ "margin-left": "-="+$( ".timeline-img-container" ).width()+"px" }, "slow", function(){
+        flag = true;
+      });
+    }
+  }
+});
+$( ".btn-left" ).bind('keyup click', function(e) {
+  if (e.type == "keyup" && e.keyCode == 13) {
+    if(flag && parseInt($( ".timeline-img" ).css('margin-left')) < 0){
+      flag = false;
+      $( ".timeline-img" ).animate({ "margin-left": "+="+$( ".timeline-img-container" ).width()+"px" }, "slow", function(){
+        flag = true;
+      });
+    }
+  }
+  else if (e.type == "click") {
+    if(flag && parseInt($( ".timeline-img" ).css('margin-left')) < 0){
+      flag = false;
+      $( ".timeline-img" ).animate({ "margin-left": "+="+$( ".timeline-img-container" ).width()+"px" }, "slow", function(){
+        flag = true;
+      });
+    }
+  }
+});
+/* end timeline animation */
+
+/* management animation */
+$(".management .card").bind('keyup click', function(e) {
+  if (e.type == "keyup" && e.keyCode == 13) {
+	if (!clicked) {
+		clicked = true;
+		var thisCard = $(this);
+		var thisDesc = $(this).next();
+		var thisDescHeight = thisDesc.outerHeight();
+		var speed = 'slow';
+
+		if(thisCard.offset().top == $('html, body').scrollTop()){
+			speed = 'fast';
+		}
+		
+		//if currently there's opened card close it first, otherwise open clicked card
+		if($(".management .card").hasClass('opened')){
+			var desc = $(".opened").next();
+			desc.fadeOut(100);
+			$(".opened").animate({'marginBottom':'2rem'}, 300, function(){
+				$('html, body').animate({scrollTop: thisCard.offset().top}, speed).promise().then(function(){
+					if(thisCard.hasClass('opened')){
+						thisCard.removeClass('opened');
+					}else{
+						$(".opened").removeClass('opened');
+						thisCard.addClass('opened');
+						thisCard.animate({'marginBottom':thisDescHeight+'px'}, 300);
+						thisDesc.animate({'marginTop':'-'+thisDescHeight+'px'}, 300);
+						thisDesc.fadeIn(100);
+					}
+					clicked = false;
+				});
+			});
+		}else{
+			$('html, body').animate({scrollTop: thisCard.offset().top}, speed).promise().then(function(){
+				thisCard.addClass('opened');
+				thisCard.animate({'marginBottom':thisDescHeight+'px'}, 300);
+				thisDesc.animate({'marginTop':'-'+thisDescHeight+'px'}, 300);
+				thisDesc.fadeIn(100);
+				clicked = false; 
+			});
+		}
+		
+		//make sure all animation are done
+		$(":animated").promise().done(function() {
+			$(".management .card").removeClass('disabled');
+		});
+  }
+}
+else if (e.type == "click") {
+  if (!clicked) {
+		clicked = true;
+		var thisCard = $(this);
+		var thisDesc = $(this).next();
+		var thisDescHeight = thisDesc.outerHeight();
+		var speed = 'slow';
+
+		if(thisCard.offset().top == $('html, body').scrollTop()){
+			speed = 'fast';
+		}
+		
+		//if currently there's opened card close it first, otherwise open clicked card
+		if($(".management .card").hasClass('opened')){
+			var desc = $(".opened").next();
+			desc.fadeOut(100);
+			$(".opened").animate({'marginBottom':'2rem'}, 300, function(){
+				$('html, body').animate({scrollTop: thisCard.offset().top}, speed).promise().then(function(){
+					if(thisCard.hasClass('opened')){
+						thisCard.removeClass('opened');
+					}else{
+						$(".opened").removeClass('opened');
+						thisCard.addClass('opened');
+						thisCard.animate({'marginBottom':thisDescHeight+'px'}, 300);
+						thisDesc.animate({'marginTop':'-'+thisDescHeight+'px'}, 300);
+						thisDesc.fadeIn(100);
+					}
+					clicked = false;
+				});
+			});
+		}else{
+			$('html, body').animate({scrollTop: thisCard.offset().top}, speed).promise().then(function(){
+				thisCard.addClass('opened');
+				thisCard.animate({'marginBottom':thisDescHeight+'px'}, 300);
+				thisDesc.animate({'marginTop':'-'+thisDescHeight+'px'}, 300);
+				thisDesc.fadeIn(100);
+				clicked = false; 
+			});
+		}
+		
+		//make sure all animation are done
+		$(":animated").promise().done(function() {
+			$(".management .card").removeClass('disabled');
+		});
+  }
+}
+});
+$(window).resize(function() {
+        $(".management .card.opened").next().hide(); 
+        $(".management .card.opened").removeAttr('style');
+        $(".management .card.opened").removeClass('opened');
+    
+});
+//close button
+$(".management-desc .close").click(function(){
+	$(".opened").next().fadeOut(100);
+	$('html, body').animate({scrollTop: $(".opened").offset().top}, 'slow');
+	$(".opened").animate({'marginBottom':'2rem'}, 300, function(){
+		$(".opened").removeClass('opened');
+	});
+});
+/* end management animation */
+var ss360Config = {
+	/* Your site id */
+	siteId: 'www.americanadvisorsgroup.com',
+	/* A CSS selector that points to your search  box */
+	searchBoxSelector: '.ss360SearchBox',
+	// the selector pointing to the button(s) triggering the search
+	searchButton: '.search_trigger',
+	// the name of the search query parameter, e.g. http://site.com?ss360Query=search (v8 and up)
+    searchQueryParamName: 'q',
+	// search all content groups
+	includeContentGroups: [],
+	// if you only want to exclude a certain content group from the search results, e.g. ['Articles']
+	excludeContentGroups: [],
+	// should results be grouped?
+	groupResults: false,
+	// if undefined, a layer with the search results will appear
+	// you can embed the results by pointing to the DOM element where the results should be inserted
+	// display results on the /search page
+	// e.g. {'contentBlock':'a selector where the results should be inserted'}
+	searchResults: {'contentBlock': '#searchResults','url':'/search'},
+	// whether to show search suggestions
+	showSearchSuggestions: true,
+	// minimum number of characters before the suggests shows, default: 3
+	minChars: 2,
+	// whether to show images in search suggestions
+	showImagesSuggestions: true,
+	// the maximum number of search suggests to be shown [1, 25]
+	numSuggestions: 5,
+	// the maximum number of search results to be shown [1,1000]
+	numResults: 1000,
+	// e.g. 'Show more results'
+	moreResultsButton: 'Show more results',
+	// the number of new results to show each time the more results button is pressed, moreResultButton must not be undefined
+	moreResultsPagingSize: 10,
+	// a callback that is triggered before the search is executed, e.g. to catch empty queries
+	preSearchCallback: function(query,sort) {
+		// change the settings depending on what search box is selected
+		if (this.id == 'search_field') {
+			// render results in left container
+			SS360.changeConfig('searchResults', {'contentBlock': '#searchResults','url':'/search/'});
+			// search all content groups
+			SS360.changeConfig('includeContentGroups',[]);
+			// if you only want to exclude a certain content group from the search results, e.g. ['Articles']
+			SS360.changeConfig('excludeContentGroups', ['Local/NFS']);
+		} else if (this.id == 'loanOfficerSearchInput') {
+			// render results in right container
+			SS360.changeConfig('searchResults', {'contentBlock': '#searchResults','url':'/local/search/'});
+			// search only "menu items" content group
+			SS360.changeConfig('includeContentGroups',['Local/NFS']);
+		}
+
+		// return true so the search is triggered
+		return true;
+	},
+	// options for special mobile suggestions
+	specialMobileSuggest: {
+		// whether to show special mobile suggests
+		enabled: false
+	},
+};
+
+//bind to search button
+function clickSearch(clickevent) {
+	//only trigger when there's search input
+	if($(".search-bar #search_field").val().length > 0){
+		var e = jQuery.Event("keyup");
+		e.which = 13;
+		e.keyCode = 13;
+		$("#search_field").trigger(e);
+		clickevent.stopPropagation();
+		return false;
+	}
+}
+
+/* open tab */
+var url = document.location.toString();
+if (url.match('#')) {
+	$('.nav-tabs a[href="#'+url.split('#')[1]+'"]').tab('show') ;
+}
+
+// Change hash for page-reload
+$('.nav-tabs a').on('shown.bs.tab', function (e) {
+    var scroll = $('html, body').scrollTop();
+    window.location.hash = e.target.hash;
+    $('html,body').scrollTop(scroll);
+})
+/* end open tab */
+/* check for contact form complete message */
+if(url.indexOf("#complete") > -1) {
+	$('.contact-form-container .form').hide();
+	$('.contact-form-container .success').show();
+	$('html, body').animate({
+		scrollTop: $(".contact-form").offset().top
+	}, 500);
+}
+/* end check for contact form complete message */ 
+
+/* Enter key to open contact-us branch locations */ 
+$('.card').keypress(function(e) {
+  if (e.keyCode == 13) {
+    $(this).find('.contact-details-btn').click();
+  }
+});

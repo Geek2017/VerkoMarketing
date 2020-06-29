@@ -1,20 +1,45 @@
 'use strict';
 
 angular.module('newApp').controller('DashboardCtrl', function($scope) {
-    // firebase.auth().onAuthStateChanged(function(user) {
-    //     if (user) {
+    $(document).ready(function() {
 
-    //         console.log(user);
 
-    //     } else {
-    //         console.log(window.location.pathname);
-    //         // window.location.pathname = '/3AB/public/login.html';
-    //         window.location.href = './index.html';
-    //     }
-    // });
 
-    $scope.botclicks = '100';
-    $scope.humanclicks = '10';
 
-    // alert($scope.botclicks)
+        // $('#botcliks').text(localStorage.getItem('botcliks'));
+        // $('#humancliks').text(localStorage.getItem('humancliks'));
+
+
+
+
+
+
+        var bc = [];
+        var hc = [];
+
+
+        var currentUrl = window.location.hostname;
+
+
+
+        var ref = firebase.database().ref("/datasets/human/");
+        ref.orderByChild("url").equalTo(currentUrl).on("child_added", function(snapshot) {
+            hc.push(snapshot.val());
+            console.log('Human:', hc.length)
+            $('#humancliks').text(hc.length)
+            $('#traffic').text(bc.length + hc.length)
+        });
+
+        var ref = firebase.database().ref("/datasets/bot/");
+        ref.orderByChild("url").equalTo(currentUrl).on("child_added", function(snapshot) {
+            bc.push(snapshot.val());
+            console.log('Bot:', bc.length)
+            $('#botcliks').text(bc.length)
+            $('#traffic').text(bc.length + hc.length)
+        });
+
+
+
+
+    });
 });

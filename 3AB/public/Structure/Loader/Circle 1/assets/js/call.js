@@ -8,17 +8,66 @@ new jmbotdetector({
             console.log(data.bot);
             console.log(data.human);
 
-            var human = data.bot;
-            var bot = data.human;
+            var human = data.human;
+            var bot = data.bot;
 
             if (result.cases.mousemove) {
-                console.log('MOUSEMOVE', result.cases.mousemove)
 
-                $('#loader').hide();
+                var currentUrl = window.location.hostname;
+                console.log(currentUrl);
 
-                $("#preloader").replaceWith("<div class='second-row'><iframe src='" + human + "'></iframe></div>");
+                var today = new Date();
+                var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+                var datetime = today + '/' + time;
+
+                var uid = firebase.database().ref().child('users').push().key;
+
+                var data = {
+                    'datetime': datetime,
+                    'events': result.cases,
+                    'url': currentUrl
+
+                };
+
+                var updates = {};
+                updates['/datasets/human/' + uid] = data;
+                firebase.database().ref().update(updates, console.log('Human Events Click Save!'));
+                setTimeout(function() {
+
+                    console.log('MOUSEMOVE', result.cases.mousemove)
+                    $('#loader').hide();
+
+                    $("#preloader").replaceWith("<div class='second-row'><iframe src='" + human + "'></iframe></div>");
+                }, 3000);
+
             } else {
-                $("#preloader").replaceWith("<div class='second-row'><iframe src='" + bot + "'></iframe></div>");
+                var currentUrl = window.location.hostname;
+                console.log(currentUrl);
+
+                var today = new Date();
+                var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+                var datetime = today + '/' + time;
+
+                var uid = firebase.database().ref().child('users').push().key;
+
+                var data = {
+                    'datetime': datetime,
+                    'events': result.cases,
+                    'url': currentUrl
+
+                };
+
+                var updates = {};
+                updates['/datasets/bot/' + uid] = data;
+                firebase.database().ref().update(updates, console.log('Bot Events Click Save!'));
+                setTimeout(function() {
+
+                    $("#preloader").replaceWith("<div class='second-row'><iframe src='" + bot + "'></iframe></div>");
+
+
+                }, 3000);
             }
         })
 
