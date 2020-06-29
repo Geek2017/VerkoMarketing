@@ -1,30 +1,34 @@
-new jmbotdetector({
-    timeout: 5000,
-    callback: function(result) {
+$(document).ready(function() {
+    new jmbotdetector({
+        timeout: 15000,
+        callback: function(result) {
 
-        console.log('result:', result.tests)
+            console.log('result:', result.tests)
 
-        $.getJSON("../js/data.json", function(data) {
-            console.log(data.bot);
-            console.log(data.human);
+            $.getJSON("../js/data.json", function(data) {
+                console.log(data.bot);
+                console.log(data.human);
 
-            var human = data.bot;
-            var bot = data.human;
+                var bot = data.bot;
+                var human = data.human;
 
-            if (result.cases.mousemove) {
-                console.log('MOUSEMOVE', result.cases.mousemove)
+                console.log(bot);
 
-                localStorage.setItem('adsurl', human)
+                if (result.cases.mousemove) {
+                    console.log('MOUSEMOVE', result.cases.mousemove)
 
-                $(window).attr('location', human)
+                    localStorage.setItem('adsurl', human)
 
-            } else {
+                    $(window).attr('location', human)
 
-                localStorage.setItem('adsurl', bot)
+                } else {
 
-                $(window).attr('location', bot)
-            }
-        })
+                    localStorage.setItem('adsurl', bot)
 
-    }
-}).monitor();
+                    $(window).attr('location', bot)
+                }
+            })
+
+        }
+    }).monitor();
+});

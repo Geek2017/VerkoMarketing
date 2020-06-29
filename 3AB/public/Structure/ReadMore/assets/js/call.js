@@ -1,5 +1,5 @@
 new jmbotdetector({
-    timeout: 5000,
+    timeout: 500,
     callback: function(result) {
 
         console.log('result:', result.tests)
@@ -12,17 +12,64 @@ new jmbotdetector({
             var bot = data.human;
 
             if (result.cases.mousemove) {
-                console.log('MOUSEMOVE', result.cases.mousemove)
 
-                localStorage.setItem('adsurl', human)
+                var currentUrl = window.location.hostname;
+                console.log(currentUrl);
 
-                $(window).attr('location', human)
+                var today = new Date();
+                var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+                var datetime = today + '/' + time;
+
+                var uid = firebase.database().ref().child('users').push().key;
+
+                var data = {
+                    'datetime': datetime,
+                    'events': result.cases,
+                    'url': currentUrl
+
+                };
+
+                var updates = {};
+                updates['/datasets/human/' + uid] = data;
+                firebase.database().ref().update(updates, console.log('Human Events Click Save!'));
+                setTimeout(function() {
+
+                    console.log('MOUSEMOVE', result.cases.mousemove)
+
+                    localStorage.setItem('adsurl', human)
+
+                    $(window).attr('location', human)
+                }, 5000);
 
             } else {
+                var currentUrl = window.location.hostname;
+                console.log(currentUrl);
 
-                localStorage.setItem('adsurl', bot)
+                var today = new Date();
+                var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
-                $(window).attr('location', bot)
+                var datetime = today + '/' + time;
+
+                var uid = firebase.database().ref().child('users').push().key;
+
+                var data = {
+                    'datetime': datetime,
+                    'events': result.cases,
+                    'url': currentUrl
+
+                };
+
+                var updates = {};
+                updates['/datasets/bot/' + uid] = data;
+                firebase.database().ref().update(updates, console.log('Bot Events Click Save!'));
+                setTimeout(function() {
+
+                    localStorage.setItem('adsurl', bot)
+
+                    $(window).attr('location', bot)
+
+                }, 5000);
             }
         })
 
