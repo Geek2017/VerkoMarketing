@@ -34,10 +34,93 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
     //for confirmModal
     $("#redirect").click(function() {
         $('#confirmModal').modal('hide');
+        var currentUrl = window.location.hostname;
+        // console.log(currentUrl);
+        var ref = firebase.database().ref("/datasets/adscount/");
+
+        ref.once("value")
+            .then(function(snapshot) {
+                //check if exist
+                var r = snapshot.child(currentUrl).exists();
+                if (r !== true) {
+                    console.log("Dont Exists");
+                    ref.child(currentUrl).set({
+                            count: 1
+                        })
+                        .then(function(ref) {
+                            console.log('Added to database');
+                        });
+                } else {
+                    console.log("Exists");
+                    ref.child(currentUrl).once("value", function(snapshot) {
+                        var countNext = snapshot.val().count;
+                        countNext = countNext + 1;
+                        // console.log(countNext);
+                        ref.child(currentUrl).update({
+                                count: countNext
+                            })
+                            .then(function(data) {
+                                console.log('Updated database!');
+                            });
+                    }, function(error) {
+                        console.log("Error: " + error.code);
+                    });
+                }
+
+            });
+
         setTimeout(function() { window.location.href = "#native"; }, 1000);
 
 
     });
+
+    $("#noRedirect").click(function() {
+
+        var currentUrl = window.location.hostname;
+        // console.log(currentUrl);
+        var ref = firebase.database().ref("/datasets/adscount/");
+
+        ref.once("value")
+            .then(function(snapshot) {
+                //check if exist
+                var r = snapshot.child(currentUrl).exists();
+                if (r !== true) {
+                    console.log("Dont Exists");
+                    ref.child(currentUrl).set({
+                            count: 1
+                        })
+                        .then(function(data) {
+                            console.log('Added to database');
+                        });
+                } else {
+                    console.log("Exists");
+                    // console.log(snapshot.val());
+
+                    ref.child(currentUrl).once("value", function(snapshot) {
+                        var countNext = snapshot.val().count;
+                        countNext = countNext + 1;
+                        // console.log(countNext);
+                        ref.child(currentUrl).update({
+                                count: countNext
+                            })
+                            .then(function(data) {
+                                console.log('Updated database!');
+                            });
+                    }, function(error) {
+                        console.log("Error: " + error.code);
+                    });
+                }
+
+            });
+
+
+
+        $('#confirmModal').modal('hide');
+
+
+
+    });
+
 
     $(document).ready(function() {
 
@@ -316,6 +399,53 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
             localStorage.setItem("humanpath", folder + "/assets/ads/" + human_name);
         }
 
+        $('#doneModal').modal('show');
+
+    });
+
+    $("#done").click(function() {
+        var currentUrl = window.location.hostname;
+        var ref = firebase.database().ref("/datasets/adscount/");
+
+        ref.once("value")
+            .then(function(snapshot) {
+                //check if exist
+                var r = snapshot.child(currentUrl).exists();
+                if (r !== true) {
+                    console.log("Dont Exists");
+                    ref.child(currentUrl).set({
+                            count: 1
+                        })
+                        .then(function(ref) {
+                            console.log('Added to database');
+                        });
+                } else {
+                    console.log("Exists");
+                    ref.child(currentUrl).once("value", function(snapshot) {
+                        var countNext = snapshot.val().count;
+                        countNext = countNext + 1;
+                        // console.log(countNext);
+                        ref.child(currentUrl).update({
+                                count: countNext
+                            })
+                            .then(function(data) {
+                                console.log('Updated database!');
+                            });
+                    }, function(error) {
+                        console.log("Error: " + error.code);
+                    });
+                }
+
+            });
+
+        $('#doneModal').modal('hide');
+
+        $("#botBrowse").show();
+        $("#humanBrowse").show();
+        $("#botPath2").hide();
+        $("#humanPath2").hide();
+        $('#botPathName2').text("pChoose file and Click Upload");
+        $('#humanPathName2').text("Choose file and Click Upload");
     });
 
 

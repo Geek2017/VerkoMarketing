@@ -435,6 +435,7 @@
                     <button type="button" name="humanFileSave" id="humanFileSave" class="btn btn-danger" style="float: right;">Save</button>
                 </div>
             </div>
+            <br>
 
 
             <!-- <div class="input-group input-group">
@@ -480,8 +481,27 @@
                 <p>Do you want to redirect to the Native Page?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-primary" name="redirect" id="redirect" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn btn-danger" name="noRedirect" id="noRedirect">No</button>
+                <button type="button" class="btn btn-primary" name="redirect" id="redirect">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="doneModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><span id="change_title">Done!</span></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <p>You done creating your custom path</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" name="done" id="done">Okay</button>
+                <!-- <button type="button" class="btn btn-primary" name="redirect" id="redirect">Yes</button> -->
             </div>
         </div>
     </div>
