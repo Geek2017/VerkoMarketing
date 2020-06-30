@@ -1468,6 +1468,7 @@ Vvveb.Gui = {
 	saveAjax : function () {
 		
 		var url = Vvveb.FileManager.getCurrentUrl();
+		// var botpath = localStorage.getItem("botpath");
 		
 		return Vvveb.Builder.saveAjax(url, null, function (data) {
 			$('#message-modal').modal().find(".modal-body").html("File saved at: " + data);
