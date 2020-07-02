@@ -175,11 +175,12 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                         load_folder_list();
                         alert(data);
                         $('#folder_name').val("");
-                        $('#botPathText').val("public_html/3AB/" + folder_name + "/assets/ads/bot.html");
-                        $('#humanPathText').val("public_html/3AB/" + folder_name + "/assets/ads/human.html");
+                        $('#botPathText').val("public_html/3AB/" + folder_name + "/assets/ads/bot/index.html");
+                        $('#humanPathText').val("public_html/3AB/" + folder_name + "/assets/ads/human/index.html");
                         $('#confirmModal').modal('show');
-                        localStorage.setItem("botpath", folder_name + "/assets/ads/bot.html");
-                        localStorage.setItem("humanpath", folder_name + "/assets/ads/human.html");
+                        localStorage.setItem("botpath", folder_name + "/assets/ads/bot/index.html");
+                        localStorage.setItem("humanpath", folder_name + "/assets/ads/human/index.html");
+                        localStorage.setItem("folder_name", folder_name);
                     }
                 });
             } else {
@@ -214,6 +215,7 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                         $('#humanPathName2').text("public_html/" + folder_name + "/assets/ads/");
                         localStorage.setItem("botpath", folder_name + "/assets/ads/");
                         localStorage.setItem("humanpath", folder_name + "/assets/ads/");
+                        localStorage.setItem("folder_name", folder_name);
                         // document.cookie = folder_name + "/assets/ads/";
                     }
                 });

@@ -2,18 +2,7 @@
 <html lang="en">
 
 <head>
-    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
-    <script>
-        var config = {
-            apiKey: "AIzaSyA-fqW8NmUfA6YIMMJ-HLRuTVRJtC7b6mw",
-            authDomain: "geocoord-1532713040637.firebaseapp.com",
-            databaseURL: "https://geocoord-1532713040637.firebaseio.com",
-            projectId: "geocoord-1532713040637"
-        };
 
-        firebase.initializeApp(config);
-    </script>
-    <script src="../../assets/js/script.js"></script>
 </head>
 
 <body>
@@ -25,41 +14,5 @@
     </div>
 
 </body>
-
-<script type="text/javascript" language="javascript">
-    new jmbotdetector({
-        timeout: 3000,
-        callback: function(result) {
-
-            console.log('result:', result.cases)
-
-            var currentUrl = window.location.href;
-            console.log(currentUrl);
-
-            var today = new Date();
-            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-
-            var datetime = today + '/' + time;
-
-            var uid = firebase.database().ref().child('users').push().key;
-
-            var data = {
-                'datetime': datetime,
-                'events': result.cases,
-                'url': currentUrl
-
-            };
-
-            var updates = {};
-            updates['/datasets/' + uid] = data;
-            firebase.database().ref().update(updates, console.log('Events Click Save!'));
-
-            var message = document.getElementById('message');
-            var list = document.getElementById('tests');
-
-
-        }
-    }).monitor();
-</script>
 
 </html>
