@@ -272,6 +272,9 @@
             var email = $('#email').val()
             var password = $('#password').val()
 
+            localStorage.setItem("username", username);
+            localStorage.setItem("register", "custom");
+
             firebase.auth().createUserWithEmailAndPassword(email, password)
                 .then(function(user) {
                     console.log(user.uid);
@@ -313,6 +316,7 @@
         var provider = new firebase.auth.GoogleAuthProvider();
 
         function googleSignin() {
+            localStorage.setItem("register", "gmail");
             firebase.auth()
 
             .signInWithPopup(provider).then(function(result) {
@@ -333,6 +337,7 @@
         }
 
         function googleSignin2() {
+            localStorage.setItem("register", "gmail");
             firebase.auth()
 
             .signInWithPopup(provider).then(function(result) {

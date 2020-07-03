@@ -1,6 +1,6 @@
 // Application Modules and Routing
 angular
-    .module('newApp', ['ngRoute'])
+    .module('newApp', ['ngRoute', 'firebase'])
     .config(function($routeProvider) {
         $routeProvider
             .when('/', {
@@ -30,5 +30,9 @@ angular
             .when('/eventslog', {
                 templateUrl: 'views/EventsLog.html',
                 controller: 'EventsLogCtrl'
-            });
+            })
+            .when('/settings', {
+                templateUrl: 'views/Settings.html',
+                controller: 'SettingsCtrl'
+            });;
     });

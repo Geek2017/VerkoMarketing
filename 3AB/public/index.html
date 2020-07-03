@@ -36,6 +36,8 @@
     <!-- AngularJS -->
     <script src="./assets/libraries/AngularJS/angular.js"></script>
     <script src="./assets/libraries/AngularJS/angular-route.js"></script>
+    <script src="./bower_components/firebase/firebase.js"></script>
+    <script src="./bower_components/angularfire/dist/angularfire.js"></script>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
     <script>
@@ -46,11 +48,13 @@
             projectId: "geocoord-1532713040637"
         };
 
+
         firebase.initializeApp(config);
+        var ref = firebase.database().ref("datasets/users");
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
 
-                console.log(user);
+                // console.log(user);
                 var temp = firebase.auth().currentUser.photoURL;
                 // console.log(firebase.auth().currentUser.photoURL);
                 // console.log(firebase.auth().currentUser.displayName);
@@ -64,6 +68,33 @@
                 } else {
                     document.getElementById("username").innerHTML = firebase.auth().currentUser.displayName;
                 }
+
+                var userVerify = firebase.auth().currentUser;
+
+                ref.orderByChild("role").once("value")
+                    .then(function(snapshot) {
+                        var exist = snapshot.exists();
+                        var role = snapshot.child(userVerify.uid).child("role").val();
+                        var UID = firebase.auth().currentUser.uid;
+                        //console.log(UID);
+                        //console.log(snapshot.val());   
+                        //console.log(role);
+                        if (role == 'ordinary') {
+                            // $("#ai").hide();
+                            // $("#logs").hide();
+                            // $("#settings").hide();
+                        } else if (role == 'super') {
+                            $("#ai").show();
+                            $("#logs").show();
+                            // $("#settings").show();
+                            // $("#settings").hide();
+                        } else if (role == 'admin') {
+                            $("#ai").show();
+                            $("#logs").show();
+                            $("#settings").show();
+                        }
+
+                    });
 
 
             } else {
@@ -151,7 +182,7 @@
                             </a>
 
                         </li>
-                        <li class="nav-item has-treeview">
+                        <li class="nav-item has-treeview" id="builder">
                             <a class="nav-link">
                                 <i class="nav-icon  fas fa-cogs"> </i>
                                 <p>
@@ -175,7 +206,7 @@
 
                             </ul>
                         </li>
-                        <li class="nav-item has-treeview">
+                        <li style="display: none;" class="nav-item has-treeview" id="ai">
                             <a class="nav-link">
                                 <i class="nav-icon fas fa-fingerprint"></i>
                                 <p>
@@ -208,7 +239,7 @@
 
                             </ul>
                         </li>
-                        <li class="nav-item has-treeview">
+                        <li style="display: none;" class="nav-item has-treeview" id="logs">
                             <a href="#/eventslog" class="nav-link">
                                 <i class="nav-icon fas fa-clipboard-list"></i>
                                 <p>
@@ -216,8 +247,8 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
+                        <li style="display: none;" class="nav-item" id="settings">
+                            <a href="#/settings" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Settings
@@ -288,9 +319,11 @@
     <script src="controllers/MachineLearnCtrl.js"></script>
     <script src="controllers/DeepLearnCtrl.js"></script>
     <script src="controllers/EventsLogCtrl.js"></script>
+    <script src="controllers/SettingsCtrl.js"></script>
 
     <script>
         function signout() {
+            window.localStorage.removeItem("username");
             firebase.auth().signOut().then(function() {
                 console.log("Logged out!");
                 window.location.href = './index.html';
