@@ -12,12 +12,12 @@ foreach($toBeDeleted as $file){ // iterate files
 
 if($_FILES["botFile"]["name"] != ''){
     //$test = explode(".", $_FILES["botFile"],["name"]);
-    $location = "../../" . $folder . "/assets/ads/" . basename($_FILES["botFile"]["name"]);
+    $location = "../../" . $folder . "/assets/ads/bot/" . basename($_FILES["botFile"]["name"]);
     move_uploaded_file($_FILES["botFile"]["tmp_name"], $location);
     // echo "Added";
     $zip = new ZipArchive;
 if ($zip->open($location) === TRUE) {
-    $zip->extractTo("../../" . $folder . "/assets/ads/");
+    $zip->extractTo("../../" . $folder . "/assets/ads/bot/");
     $zip->close();
     echo 'Your .zip file was uploaded and unpacked.';
 } else {

@@ -5,6 +5,20 @@ angular.module('newApp').controller('SettingsCtrl', function($firebaseArray, $sc
 
     // console.log("Settings");
 
+    // Get the modal
+    var modal = document.getElementById('myModal');
+    var modal2 = document.getElementById('myModal2');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var accept = document.getElementById("accept");
+
+    $("#editBtn").click(function() {
+        modal.style.display = "block";
+    });
+
     var ref = firebase.database().ref('datasets/users');
 
     var username, email, role, id;
@@ -34,6 +48,14 @@ angular.module('newApp').controller('SettingsCtrl', function($firebaseArray, $sc
         // console.log(users);
         $scope.clickedUser = users;
         id = users;
+        modal.style.display = "block";
+    };
+
+    $scope.selectUser2 = function(users) {
+        // console.log(users);
+        $scope.clickedUser = users;
+        id = users;
+        modal2.style.display = "block";
     };
 
     $scope.updateUser = function() {
@@ -46,11 +68,22 @@ angular.module('newApp').controller('SettingsCtrl', function($firebaseArray, $sc
             role: $scope.clickedUser.role
         })
 
+        modal.style.display = "none";
+
     };
 
     $scope.deleteUser = function() {
         var ref = firebase.database().ref("datasets/users/" + id.$id);
         ref.remove();
+        modal2.style.display = "none";
+    };
+
+    $scope.close = function() {
+        modal.style.display = "none";
+    };
+
+    $scope.close2 = function() {
+        modal2.style.display = "none";
     };
 
 

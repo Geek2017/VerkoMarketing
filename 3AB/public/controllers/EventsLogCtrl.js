@@ -34,12 +34,12 @@ angular.module('newApp').controller('EventsLogCtrl', function($firebaseArray, $s
                 // bc.push(childSnapshot.val());
                 // console.log(childSnapshot.val());
                 bc.push({
-                    text: 'adscount',
-                    nodes: [{
-                        text: 'domain : ' + childSnapshot.key,
-                        // tags: [childSnapshot.numChildren()],
-                        nodes: [{ text: 'counts : ' + childSnapshot.child('count').val() }]
-                    }]
+                    // text: 'adscount',
+                    // nodes: [{
+                    text: 'domain : ' + childSnapshot.key,
+                    // tags: [childSnapshot.numChildren()],
+                    nodes: [{ text: 'counts : ' + childSnapshot.child('count').val() }]
+                        // }]
                 });
 
 
@@ -66,11 +66,11 @@ angular.module('newApp').controller('EventsLogCtrl', function($firebaseArray, $s
                 // bc.push(childSnapshot.val());
                 // console.log(childSnapshot.val());
                 bc2.push({
-                    text: 'bot',
-                    nodes: [{
-                        text: childSnapshot.key,
-                        // tags: [childSnapshot.numChildren()],
-                        nodes: [{ text: 'datetime : ' + childSnapshot.child('datetime').val() },
+                    // text: 'bot',
+                    // nodes: [{
+                    text: childSnapshot.key,
+                    // tags: [childSnapshot.numChildren()],
+                    nodes: [{ text: 'datetime : ' + childSnapshot.child('datetime').val() },
                             {
                                 text: 'events',
                                 tags: ['8'],
@@ -86,7 +86,7 @@ angular.module('newApp').controller('EventsLogCtrl', function($firebaseArray, $s
                             },
                             { text: 'url : ' + childSnapshot.child('url').val() }
                         ]
-                    }]
+                        // }]
                 });
 
             })
@@ -103,11 +103,11 @@ angular.module('newApp').controller('EventsLogCtrl', function($firebaseArray, $s
                 // bc.push(childSnapshot.val());
                 // console.log(childSnapshot.val());
                 bc3.push({
-                    text: 'human',
-                    nodes: [{
-                        text: childSnapshot.key,
-                        // tags: [childSnapshot.numChildren()],
-                        nodes: [{ text: 'datetime : ' + childSnapshot.child('datetime').val() },
+                    // text: 'human',
+                    // nodes: [{
+                    text: childSnapshot.key,
+                    // tags: [childSnapshot.numChildren()],
+                    nodes: [{ text: 'datetime : ' + childSnapshot.child('datetime').val() },
                             {
                                 text: 'events',
                                 tags: ['8'],
@@ -123,7 +123,7 @@ angular.module('newApp').controller('EventsLogCtrl', function($firebaseArray, $s
                             },
                             { text: 'url : ' + childSnapshot.child('url').val() }
                         ]
-                    }]
+                        // }]
                 });
 
             })
@@ -140,15 +140,15 @@ angular.module('newApp').controller('EventsLogCtrl', function($firebaseArray, $s
                 // bc.push(childSnapshot.val());
                 // console.log(childSnapshot.val());
                 bc4.push({
-                    text: 'user',
-                    nodes: [{
-                        text: childSnapshot.key,
-                        // tags: [childSnapshot.numChildren()],
-                        nodes: [{ text: 'email : ' + childSnapshot.child('email').val() },
+                    // text: 'user',
+                    // nodes: [{
+                    text: childSnapshot.key,
+                    // tags: [childSnapshot.numChildren()],
+                    nodes: [{ text: 'email : ' + childSnapshot.child('email').val() },
                             { text: 'role : ' + childSnapshot.child('role').val() },
                             { text: 'username : ' + childSnapshot.child('username').val() }
                         ]
-                    }]
+                        // }]
                 });
 
             })

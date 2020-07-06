@@ -31,96 +31,6 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
             // console.log(loader);
     });
 
-    //for confirmModal
-    $("#redirect").click(function() {
-        $('#confirmModal').modal('hide');
-        var currentUrl = window.location.hostname;
-        // console.log(currentUrl);
-        var ref = firebase.database().ref("/datasets/adscount/");
-
-        ref.once("value")
-            .then(function(snapshot) {
-                //check if exist
-                var r = snapshot.child(currentUrl).exists();
-                if (r !== true) {
-                    console.log("Dont Exists");
-                    ref.child(currentUrl).set({
-                            count: 1
-                        })
-                        .then(function(ref) {
-                            console.log('Added to database');
-                        });
-                } else {
-                    console.log("Exists");
-                    ref.child(currentUrl).once("value", function(snapshot) {
-                        var countNext = snapshot.val().count;
-                        countNext = countNext + 1;
-                        // console.log(countNext);
-                        ref.child(currentUrl).update({
-                                count: countNext
-                            })
-                            .then(function(data) {
-                                console.log('Updated database!');
-                            });
-                    }, function(error) {
-                        console.log("Error: " + error.code);
-                    });
-                }
-
-            });
-
-        setTimeout(function() { window.location.href = "#native"; }, 1000);
-
-
-    });
-
-    $("#noRedirect").click(function() {
-
-        var currentUrl = window.location.hostname;
-        // console.log(currentUrl);
-        var ref = firebase.database().ref("/datasets/adscount/");
-
-        ref.once("value")
-            .then(function(snapshot) {
-                //check if exist
-                var r = snapshot.child(currentUrl).exists();
-                if (r !== true) {
-                    console.log("Dont Exists");
-                    ref.child(currentUrl).set({
-                            count: 1
-                        })
-                        .then(function(data) {
-                            console.log('Added to database');
-                        });
-                } else {
-                    console.log("Exists");
-                    // console.log(snapshot.val());
-
-                    ref.child(currentUrl).once("value", function(snapshot) {
-                        var countNext = snapshot.val().count;
-                        countNext = countNext + 1;
-                        // console.log(countNext);
-                        ref.child(currentUrl).update({
-                                count: countNext
-                            })
-                            .then(function(data) {
-                                console.log('Updated database!');
-                            });
-                    }, function(error) {
-                        console.log("Error: " + error.code);
-                    });
-                }
-
-            });
-
-
-
-        $('#confirmModal').modal('hide');
-
-
-
-    });
-
 
     $(document).ready(function() {
 
@@ -158,6 +68,10 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
             var folder_name = $('#folder_name').val();
             var action = $('#action').val();
 
+            var x = document.getElementById("snackbar");
+
+
+
 
             if (folder_name != '') {
                 $.ajax({
@@ -173,18 +87,64 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                     success: function(data) {
                         // $('#folderModal').modal('hide');
                         load_folder_list();
-                        alert(data);
+                        // alert(data);
                         $('#folder_name').val("");
                         $('#botPathText').val("public_html/3AB/" + folder_name + "/assets/ads/bot/index.html");
                         $('#humanPathText').val("public_html/3AB/" + folder_name + "/assets/ads/human/index.html");
-                        $('#confirmModal').modal('show');
+                        // $('#confirmModal').modal('show');
+                        x.className = "show";
+                        var currentUrl = window.location.hostname;
+                        // console.log(currentUrl);
+                        var ref = firebase.database().ref("/datasets/adscount/");
+
+                        ref.once("value")
+                            .then(function(snapshot) {
+                                //check if exist
+                                var r = snapshot.child(currentUrl).exists();
+                                if (r !== true) {
+                                    console.log("Dont Exists");
+                                    ref.child(currentUrl).set({
+                                            count: 1
+                                        })
+                                        .then(function(data) {
+                                            console.log('Added to database');
+                                        });
+                                } else {
+                                    console.log("Exists");
+                                    // console.log(snapshot.val());
+
+                                    ref.child(currentUrl).once("value", function(snapshot) {
+                                        var countNext = snapshot.val().count;
+                                        countNext = countNext + 1;
+                                        // console.log(countNext);
+                                        ref.child(currentUrl).update({
+                                                count: countNext
+                                            })
+                                            .then(function(data) {
+                                                console.log('Updated database!');
+                                            });
+                                    }, function(error) {
+                                        console.log("Error: " + error.code);
+                                    });
+                                }
+
+                            });
+                        setTimeout(function() {
+                            x.className = x.className.replace("show", "");
+                            window.location.href = "#native";
+                        }, 3000);
                         localStorage.setItem("botpath", folder_name + "/assets/ads/bot/index.html");
                         localStorage.setItem("humanpath", folder_name + "/assets/ads/human/index.html");
                         localStorage.setItem("folder_name", folder_name);
                     }
                 });
             } else {
-                alert("Enter Folder Name");
+                var y = document.getElementById("snackbar2");
+                y.className = "show";
+                setTimeout(function() {
+                    y.className = y.className.replace("show", "");
+                }, 3000);
+                // alert("Enter Folder Name");
             }
         });
 
@@ -208,19 +168,76 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                     success: function(data) {
                         // $('#folderModal').modal('hide');
                         load_folder_list();
-                        alert(data);
+                        // alert(data);
                         $('#folder_name2').val("");
                         folder = folder_name;
+
+                        var ref = firebase.database().ref("/datasets/adscount/");
+
+                        ref.once("value")
+                            .then(function(snapshot) {
+                                //check if exist
+                                var r = snapshot.child(currentUrl).exists();
+                                if (r !== true) {
+                                    console.log("Dont Exists");
+                                    ref.child(currentUrl).set({
+                                            count: 1
+                                        })
+                                        .then(function(ref) {
+                                            console.log('Added to database');
+                                        });
+                                } else {
+                                    console.log("Exists");
+                                    ref.child(currentUrl).once("value", function(snapshot) {
+                                        var countNext = snapshot.val().count;
+                                        countNext = countNext + 1;
+                                        // console.log(countNext);
+                                        ref.child(currentUrl).update({
+                                                count: countNext
+                                            })
+                                            .then(function(data) {
+                                                console.log('Updated database!');
+                                            });
+                                    }, function(error) {
+                                        console.log("Error: " + error.code);
+                                    });
+                                }
+
+                            });
+
+                        $('#doneModal').modal('hide');
+
+                        $("#botBrowse").show();
+                        $("#humanBrowse").show();
+                        $("#botPath2").hide();
+                        $("#humanPath2").hide();
+                        $('#botPathName2').text("Choose file and Click Upload");
+                        $('#humanPathName2').text("Choose file and Click Upload");
+
+                        var a = document.getElementById("snackbar3");
+                        a.className = "show";
+                        setTimeout(function() {
+                            a.className = a.className.replace("show", "");
+                        }, 3000);
+
                         $('#botPathName2').text("public_html/" + folder_name + "/assets/ads/");
                         $('#humanPathName2').text("public_html/" + folder_name + "/assets/ads/");
                         localStorage.setItem("botpath", folder_name + "/assets/ads/");
                         localStorage.setItem("humanpath", folder_name + "/assets/ads/");
                         localStorage.setItem("folder_name", folder_name);
+                        var currentUrl = window.location.hostname;
+
+
                         // document.cookie = folder_name + "/assets/ads/";
                     }
                 });
             } else {
-                alert("Enter Folder Name");
+                var b = document.getElementById("snackbar4");
+                b.className = "show";
+                setTimeout(function() {
+                    b.className = b.className.replace("show", "");
+                }, 3000);
+                // alert("Enter Folder Name");
             }
         });
 
@@ -404,53 +421,6 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
         $('#doneModal').modal('show');
 
     });
-
-    $("#done").click(function() {
-        var currentUrl = window.location.hostname;
-        var ref = firebase.database().ref("/datasets/adscount/");
-
-        ref.once("value")
-            .then(function(snapshot) {
-                //check if exist
-                var r = snapshot.child(currentUrl).exists();
-                if (r !== true) {
-                    console.log("Dont Exists");
-                    ref.child(currentUrl).set({
-                            count: 1
-                        })
-                        .then(function(ref) {
-                            console.log('Added to database');
-                        });
-                } else {
-                    console.log("Exists");
-                    ref.child(currentUrl).once("value", function(snapshot) {
-                        var countNext = snapshot.val().count;
-                        countNext = countNext + 1;
-                        // console.log(countNext);
-                        ref.child(currentUrl).update({
-                                count: countNext
-                            })
-                            .then(function(data) {
-                                console.log('Updated database!');
-                            });
-                    }, function(error) {
-                        console.log("Error: " + error.code);
-                    });
-                }
-
-            });
-
-        $('#doneModal').modal('hide');
-
-        $("#botBrowse").show();
-        $("#humanBrowse").show();
-        $("#botPath2").hide();
-        $("#humanPath2").hide();
-        $('#botPathName2').text("pChoose file and Click Upload");
-        $('#humanPathName2').text("Choose file and Click Upload");
-    });
-
-
 
     $("#theme1").click(function() {
         document.getElementById("h3Tag").innerHTML = " ";
