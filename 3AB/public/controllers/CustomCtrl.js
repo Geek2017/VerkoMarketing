@@ -220,10 +220,10 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                             a.className = a.className.replace("show", "");
                         }, 3000);
 
-                        $('#botPathName2').text("public_html/" + folder_name + "/assets/ads/");
-                        $('#humanPathName2').text("public_html/" + folder_name + "/assets/ads/");
-                        localStorage.setItem("botpath", folder_name + "/assets/ads/");
-                        localStorage.setItem("humanpath", folder_name + "/assets/ads/");
+                        $('#botPathName2').text("public_html/" + folder_name + "/assets/ads/bot/");
+                        $('#humanPathName2').text("public_html/" + folder_name + "/assets/ads/human/");
+                        localStorage.setItem("botpath", folder_name + "/assets/ads/bot/");
+                        localStorage.setItem("humanpath", folder_name + "/assets/ads/human/");
                         localStorage.setItem("folder_name", folder_name);
                         var currentUrl = window.location.hostname;
 
@@ -400,10 +400,20 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
 
         var bot_name = $('#botPathText2').val();
         if (bot_name == "") {
-            console.log("Enter your bot html file");
+            var bothtml = document.getElementById("snackbar5");
+            bothtml.className = "show";
+            setTimeout(function() {
+                bothtml.className = bothtml.className.replace("show", "");
+            }, 3000);
+            // console.log("Enter your bot html file");
         } else {
-            console.log("Saved");
-            localStorage.setItem("botpath", folder + "/assets/ads/" + bot_name);
+            // console.log("Saved");
+            var bothSaved = document.getElementById("snackbar6");
+            bothSaved.className = "show";
+            setTimeout(function() {
+                bothSaved.className = bothSaved.className.replace("show", "");
+            }, 3000);
+            localStorage.setItem("botpath", folder + "/assets/ads/bot/" + bot_name);
         }
 
 
@@ -412,13 +422,23 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
     $("#humanFileSave").click(function() {
         var human_name = $('#humanPathText2').val();
         if (human_name == "") {
-            console.log("Enter your human html file");
+            var humanhtml = document.getElementById("snackbar7");
+            humanhtml.className = "show";
+            setTimeout(function() {
+                humanhtml.className = humanhtml.className.replace("show", "");
+            }, 3000);
+            // console.log("Enter your human html file");
         } else {
-            console.log("Saved");
-            localStorage.setItem("humanpath", folder + "/assets/ads/" + human_name);
+            // console.log("Saved");
+            var humanSaved = document.getElementById("snackbar8");
+            humanSaved.className = "show";
+            setTimeout(function() {
+                humanSaved.className = humanSaved.className.replace("show", "");
+            }, 3000);
+            localStorage.setItem("humanpath", folder + "/assets/ads/human/" + human_name);
         }
 
-        $('#doneModal').modal('show');
+        // $('#doneModal').modal('show');
 
     });
 

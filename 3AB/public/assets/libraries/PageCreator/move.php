@@ -10,11 +10,11 @@ $nfodler="../../../../" . $folder_name . "/assets/ads/bot";
 $createBot = "../../../../" . $folder_name . "/assets/ads/bot";
 $createHuman = "../../../../" . $folder_name . "/assets/ads/human";
 
-$toBeDeleted = glob("../../../../". $folder_name . "/assets/ads/bot*"); // get all file names
-foreach($toBeDeleted as $file){ // iterate files
-  if(is_file($file))
-    unlink($file); // delete file
-}
+// $toBeDeleted = glob("../../../../". $folder_name . "/assets/ads/*"); // get all file names
+// foreach($toBeDeleted as $file){ // iterate files
+//   if(is_file($file))
+//     unlink($file); // delete file
+// }
 
 if($_POST["action"] == "create"){
     if(!file_exists($folder)){

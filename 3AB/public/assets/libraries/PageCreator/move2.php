@@ -7,11 +7,11 @@ $folder_name = $_POST["folder_name"];
 
 $nfodler="../../../../" . $folder_name . "/assets/ads/human";
 
-$toBeDeleted = glob("../../../../". $folder_name . "/assets/ads/human*"); // get all file names
-foreach($toBeDeleted as $file){ // iterate files
-  if(is_file($file))
-    unlink($file); // delete file
-}
+// $toBeDeleted = glob("../../../../". $folder_name . "/assets/ads/*"); // get all file names
+// foreach($toBeDeleted as $file){ // iterate files
+//   if(is_file($file))
+//     unlink($file); // delete file
+// }
 
 
 
