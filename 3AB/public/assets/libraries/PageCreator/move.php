@@ -7,8 +7,8 @@ $folder_name = $_POST["folder_name"];
 
 $nfodler="../../../../../" . $folder_name . "/assets/ads/bot";
 
-$createBot = "../../../../" . $folder_name . "/assets/ads/bot";
-$createHuman = "../../../../" . $folder_name . "/assets/ads/human";
+$createBot = "../../../../../" . $folder_name . "/assets/ads/bot";
+$createHuman = "../../../../../" . $folder_name . "/assets/ads/human";
 
 // $toBeDeleted = glob("../../../../". $folder_name . "/assets/ads/*"); // get all file names
 // foreach($toBeDeleted as $file){ // iterate files
