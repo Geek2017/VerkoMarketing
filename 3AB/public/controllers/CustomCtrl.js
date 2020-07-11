@@ -95,40 +95,40 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                         x.className = "show";
                         var currentUrl = window.location.hostname;
                         // console.log(currentUrl);
-                        var ref = firebase.database().ref("/datasets/adscount/");
+                        // var ref = firebase.database().ref("/datasets/adscount/");
 
-                        ref.once("value")
-                            .then(function(snapshot) {
-                                //check if exist
-                                var r = snapshot.child(currentUrl).exists();
-                                if (r !== true) {
-                                    console.log("Dont Exists");
-                                    ref.child(currentUrl).set({
-                                            count: 1
-                                        })
-                                        .then(function(data) {
-                                            console.log('Added to database');
-                                        });
-                                } else {
-                                    console.log("Exists");
-                                    // console.log(snapshot.val());
+                        // ref.once("value")
+                        //     .then(function(snapshot) {
+                        //         //check if exist
+                        //         var r = snapshot.child(currentUrl).exists();
+                        //         if (r !== true) {
+                        //             console.log("Dont Exists");
+                        //             ref.child(currentUrl).set({
+                        //                     count: 1
+                        //                 })
+                        //                 .then(function(data) {
+                        //                     console.log('Added to database');
+                        //                 });
+                        //         } else {
+                        //             console.log("Exists");
+                        //             // console.log(snapshot.val());
 
-                                    ref.child(currentUrl).once("value", function(snapshot) {
-                                        var countNext = snapshot.val().count;
-                                        countNext = countNext + 1;
-                                        // console.log(countNext);
-                                        ref.child(currentUrl).update({
-                                                count: countNext
-                                            })
-                                            .then(function(data) {
-                                                console.log('Updated database!');
-                                            });
-                                    }, function(error) {
-                                        console.log("Error: " + error.code);
-                                    });
-                                }
+                        //             ref.child(currentUrl).once("value", function(snapshot) {
+                        //                 var countNext = snapshot.val().count;
+                        //                 countNext = countNext + 1;
+                        //                 // console.log(countNext);
+                        //                 ref.child(currentUrl).update({
+                        //                         count: countNext
+                        //                     })
+                        //                     .then(function(data) {
+                        //                         console.log('Updated database!');
+                        //                     });
+                        //             }, function(error) {
+                        //                 console.log("Error: " + error.code);
+                        //             });
+                        //         }
 
-                            });
+                        //     });
                         setTimeout(function() {
                             x.className = x.className.replace("show", "");
                             window.location.href = "#native";
@@ -172,38 +172,38 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                         $('#folder_name2').val("");
                         folder = folder_name;
 
-                        var ref = firebase.database().ref("/datasets/adscount/");
+                        // var ref = firebase.database().ref("/datasets/adscount/");
 
-                        ref.once("value")
-                            .then(function(snapshot) {
-                                //check if exist
-                                var r = snapshot.child(currentUrl).exists();
-                                if (r !== true) {
-                                    console.log("Dont Exists");
-                                    ref.child(currentUrl).set({
-                                            count: 1
-                                        })
-                                        .then(function(ref) {
-                                            console.log('Added to database');
-                                        });
-                                } else {
-                                    console.log("Exists");
-                                    ref.child(currentUrl).once("value", function(snapshot) {
-                                        var countNext = snapshot.val().count;
-                                        countNext = countNext + 1;
-                                        // console.log(countNext);
-                                        ref.child(currentUrl).update({
-                                                count: countNext
-                                            })
-                                            .then(function(data) {
-                                                console.log('Updated database!');
-                                            });
-                                    }, function(error) {
-                                        console.log("Error: " + error.code);
-                                    });
-                                }
+                        // ref.once("value")
+                        //     .then(function(snapshot) {
+                        //         //check if exist
+                        //         var r = snapshot.child(currentUrl).exists();
+                        //         if (r !== true) {
+                        //             console.log("Dont Exists");
+                        //             ref.child(currentUrl).set({
+                        //                     count: 1
+                        //                 })
+                        //                 .then(function(ref) {
+                        //                     console.log('Added to database');
+                        //                 });
+                        //         } else {
+                        //             console.log("Exists");
+                        //             ref.child(currentUrl).once("value", function(snapshot) {
+                        //                 var countNext = snapshot.val().count;
+                        //                 countNext = countNext + 1;
+                        //                 // console.log(countNext);
+                        //                 ref.child(currentUrl).update({
+                        //                         count: countNext
+                        //                     })
+                        //                     .then(function(data) {
+                        //                         console.log('Updated database!');
+                        //                     });
+                        //             }, function(error) {
+                        //                 console.log("Error: " + error.code);
+                        //             });
+                        //         }
 
-                            });
+                        //     });
 
                         $('#doneModal').modal('hide');
 
