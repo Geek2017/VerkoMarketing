@@ -3,13 +3,13 @@ $copy = $_POST['copy'];
 $folder = $_POST["folder_name"];
 // mkdir("test");
 
-$nfodler="../" . $folder;
-$createJS = "../" . $folder . "/js";
-$createHTML = "../" . $folder . "/html";
-$createADS = "../" . $folder . "/ads";
-$createBot = "../" . $folder . "/assets/ads/bot";
-$createHuman = "../" . $folder . "/assets/ads/human";
-$createCSS = "../" . $folder . "/css";
+$nfodler="../../" . $folder;
+$createJS = "../../" . $folder . "/js";
+$createHTML = "../../" . $folder . "/html";
+$createADS = "../../" . $folder . "/ads";
+$createBot = "../../" . $folder . "/assets/ads/bot";
+$createHuman = "../../" . $folder . "/assets/ads/human";
+$createCSS = "../../" . $folder . "/css";
 // echo $nfodler;
 
 if($_POST["action"] == "create"){

@@ -36,9 +36,11 @@ angular.module('newApp').controller('EventsLogCtrl', function($firebaseArray, $s
                 bc.push({
                     // text: 'adscount',
                     // nodes: [{
-                    text: 'domain : ' + childSnapshot.key,
+                    text: childSnapshot.key,
                     // tags: [childSnapshot.numChildren()],
-                    nodes: [{ text: 'counts : ' + childSnapshot.child('count').val() }]
+                    nodes: [{ text: 'domain : ' + childSnapshot.child('domain').val() },
+                            { text: 'counts : ' + childSnapshot.child('count').val() }
+                        ]
                         // }]
                 });
 

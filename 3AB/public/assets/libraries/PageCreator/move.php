@@ -5,7 +5,7 @@ $copy = $_POST['copy'];
 $folder_name = $_POST["folder_name"];
 // mkdir("test");
 
-$nfodler="../../../../" . $folder_name . "/assets/ads/bot";
+$nfodler="../../../../../" . $folder_name . "/assets/ads/bot";
 
 $createBot = "../../../../" . $folder_name . "/assets/ads/bot";
 $createHuman = "../../../../" . $folder_name . "/assets/ads/human";

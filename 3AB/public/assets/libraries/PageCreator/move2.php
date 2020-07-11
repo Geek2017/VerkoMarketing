@@ -5,7 +5,7 @@ $copy = $_POST['copy'];
 $folder_name = $_POST["folder_name"];
 // mkdir("test");
 
-$nfodler="../../../../" . $folder_name . "/assets/ads/human";
+$nfodler="../../../../../" . $folder_name . "/assets/ads/human";
 
 // $toBeDeleted = glob("../../../../". $folder_name . "/assets/ads/*"); // get all file names
 // foreach($toBeDeleted as $file){ // iterate files
