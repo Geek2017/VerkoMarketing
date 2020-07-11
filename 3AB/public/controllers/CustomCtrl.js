@@ -97,37 +97,38 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                         // console.log(currentUrl);
                         var ref = firebase.database().ref("/datasets/adscount/");
 
-                        ref.once("value")
+                        ref.orderByChild("domain").equalTo(currentUrl).once("value")
                             .then(function(snapshot) {
-                                //check if exist
-                                var r = snapshot.child(currentUrl).exists();
-                                if (r !== true) {
-                                    console.log("Dont Exists");
-                                    ref.child(currentUrl).set({
+
+                                var exist = snapshot.exists();
+                                var val = snapshot.val();
+                                // var countNext = snapshot.val();
+
+                                var valArray = Object.values(val);
+                                if (!exist) {
+                                    ref.push({
+                                            domain: currentUrl,
                                             count: 1
                                         })
                                         .then(function(data) {
-                                            console.log('Added to database');
+                                            // console.log(data.key);
+                                            ref.child(data.key).update({
+                                                key: data.key
+                                            })
                                         });
                                 } else {
-                                    console.log("Exists");
-                                    // console.log(snapshot.val());
 
-                                    ref.child(currentUrl).once("value", function(snapshot) {
-                                        var countNext = snapshot.val().count;
-                                        countNext = countNext + 1;
-                                        // console.log(countNext);
-                                        ref.child(currentUrl).update({
-                                                count: countNext
-                                            })
-                                            .then(function(data) {
-                                                console.log('Updated database!');
-                                            });
-                                    }, function(error) {
-                                        console.log("Error: " + error.code);
+                                    var countNext = valArray[0].count + 1;
+                                    var key = valArray[0].key;
+
+                                    // console.log(valArray[0].key);
+                                    // console.log(countNext);
+                                    ref.child(key).update({
+                                        count: countNext
+                                    }).then(function(data) {
+                                        console.log('Updated database!');
                                     });
                                 }
-
                             });
                         setTimeout(function() {
                             x.className = x.className.replace("show", "");
@@ -172,38 +173,76 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                         $('#folder_name2').val("");
                         folder = folder_name;
 
+                        var currentUrl = window.location.hostname;
+                        // console.log(currentUrl);
                         var ref = firebase.database().ref("/datasets/adscount/");
 
-                        ref.once("value")
+                        ref.orderByChild("domain").equalTo(currentUrl).once("value")
                             .then(function(snapshot) {
-                                //check if exist
-                                var r = snapshot.child(currentUrl).exists();
-                                if (r !== true) {
-                                    console.log("Dont Exists");
-                                    ref.child(currentUrl).set({
+
+                                var exist = snapshot.exists();
+                                var val = snapshot.val();
+                                // var countNext = snapshot.val();
+
+                                var valArray = Object.values(val);
+                                if (!exist) {
+                                    ref.push({
+                                            domain: currentUrl,
                                             count: 1
                                         })
-                                        .then(function(ref) {
-                                            console.log('Added to database');
+                                        .then(function(data) {
+                                            // console.log(data.key);
+                                            ref.child(data.key).update({
+                                                key: data.key
+                                            })
                                         });
                                 } else {
-                                    console.log("Exists");
-                                    ref.child(currentUrl).once("value", function(snapshot) {
-                                        var countNext = snapshot.val().count;
-                                        countNext = countNext + 1;
-                                        // console.log(countNext);
-                                        ref.child(currentUrl).update({
-                                                count: countNext
-                                            })
-                                            .then(function(data) {
-                                                console.log('Updated database!');
-                                            });
-                                    }, function(error) {
-                                        console.log("Error: " + error.code);
+
+                                    var countNext = valArray[0].count + 1;
+                                    var key = valArray[0].key;
+
+                                    // console.log(valArray[0].key);
+                                    // console.log(countNext);
+                                    ref.child(key).update({
+                                        count: countNext
+                                    }).then(function(data) {
+                                        console.log('Updated database!');
                                     });
                                 }
-
                             });
+
+                        // var ref = firebase.database().ref("/datasets/adscount/");
+
+                        // ref.once("value")
+                        //     .then(function(snapshot) {
+                        //         //check if exist
+                        //         var r = snapshot.child(currentUrl).exists();
+                        //         if (r !== true) {
+                        //             console.log("Dont Exists");
+                        //             ref.child(currentUrl).set({
+                        //                     count: 1
+                        //                 })
+                        //                 .then(function(ref) {
+                        //                     console.log('Added to database');
+                        //                 });
+                        //         } else {
+                        //             console.log("Exists");
+                        //             ref.child(currentUrl).once("value", function(snapshot) {
+                        //                 var countNext = snapshot.val().count;
+                        //                 countNext = countNext + 1;
+                        //                 // console.log(countNext);
+                        //                 ref.child(currentUrl).update({
+                        //                         count: countNext
+                        //                     })
+                        //                     .then(function(data) {
+                        //                         console.log('Updated database!');
+                        //                     });
+                        //             }, function(error) {
+                        //                 console.log("Error: " + error.code);
+                        //             });
+                        //         }
+
+                        //     });
 
                         $('#doneModal').modal('hide');
 
@@ -303,45 +342,6 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
     });
     //radio button for Custom File
     $("#customRadio2").click(function() {
-
-        var currentUrl = window.location.hostname;
-        // console.log(currentUrl);
-        var ref = firebase.database().ref("/datasets/adscount/");
-
-        ref.orderByChild("domain").equalTo(currentUrl).once("value")
-            .then(function(snapshot) {
-
-                var exist = snapshot.exists();
-                var val = snapshot.val();
-                // var countNext = snapshot.val();
-
-                var valArray = Object.values(val);
-                if (!exist) {
-                    ref.push({
-                            domain: currentUrl,
-                            count: 1
-                        })
-                        .then(function(data) {
-                            // console.log(data.key);
-                            ref.child(data.key).update({
-                                key: data.key
-                            })
-                        });
-                } else {
-
-                    var countNext = valArray[0].count + 1;
-                    var key = valArray[0].key;
-
-                    // console.log(valArray[0].key);
-                    // console.log(countNext);
-                    ref.child(key).update({
-                        count: countNext
-                    }).then(function(data) {
-                        console.log('Updated database!');
-                    });
-                }
-            });
-
         $("#defaultFile").hide();
         $("#customFile").show();
 
