@@ -17,8 +17,8 @@ if($_POST["action"] == "create"){
         mkdir($nfodler, 0777, true);
         // mkdir($createJS, 0777, true);
         // mkdir($createHTML, 0777, true);
-        // mkdir($createBot, 0777, true);
-        // mkdir($createHuman, 0777, true);
+        mkdir($createBot, 0777, true);
+        mkdir($createHuman, 0777, true);
         // mkdir($createCSS, 0777, true);
         echo 'Folder Created';
     } else {
