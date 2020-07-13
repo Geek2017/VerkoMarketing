@@ -8,6 +8,8 @@ $createJS = "../../" . $folder . "/js";
 $createHTML = "../../" . $folder . "/html";
 $createADS = "../../" . $folder . "/ads";
 $createCSS = "../../" . $folder . "/css";
+$createBot = "../../" . $folder . "/assets/ads/bot";
+$createHuman = "../../" . $folder . "/assets/ads/human";
 // echo $nfodler;
 
 if($_POST["action"] == "create"){
@@ -17,6 +19,8 @@ if($_POST["action"] == "create"){
         // mkdir($createHTML, 0777, true);
         // mkdir($createADS, 0777, true);
         // mkdir($createCSS, 0777, true);
+        mkdir($createBot, 0777, true);
+        mkdir($createHuman, 0777, true);
         echo 'Folder Created';
     } else {
         echo 'Folder Already Created';
