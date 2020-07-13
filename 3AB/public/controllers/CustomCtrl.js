@@ -173,6 +173,9 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                         $('#folder_name2').val("");
                         folder = folder_name;
 
+                        // $("#botBrowse").show();
+                        // $("#humanBrowse").show();
+
                         var currentUrl = window.location.hostname;
                         // console.log(currentUrl);
                         var ref = firebase.database().ref("/datasets/adscount/");
@@ -244,7 +247,7 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
 
                         //     });
 
-                        $('#doneModal').modal('hide');
+                        // $('#doneModal').modal('hide');
 
                         $("#botBrowse").show();
                         $("#humanBrowse").show();
@@ -347,90 +350,65 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
 
         $("#botPath1").hide();
         $("#humanPath1").hide();
-        $("#botBrowse").show();
-        $("#humanBrowse").show();
+        // $("#botBrowse").show();
+        // $("#humanBrowse").show();
         // $("#botPathText").prop("disabled", false);
         // $("#humanPathText").prop("disabled", false);
     });
 
-    $("#botFileBtn").click(function() {
-        if (localStorage.getItem("botpath") && localStorage.getItem("humanpath")) {
-            console.log("You're allowed!");
-            if (document.getElementById("botFile").files.length == 0) {
-                console.log("no files selected");
-            } else {
-                console.log("files selected");
-                console.log(document.getElementById("botFile").files[0].name);
-                $("#labelID").text(document.getElementById("botFile").files[0].name);
-                $("#botPath2").show();
+    $('#botFile').on("change", function() {
+        console.log(document.getElementById("botFile").files[0].name);
+        $("#labelID").text(document.getElementById("botFile").files[0].name);
+        $("#botPath2").show();
 
-                var file_name = document.getElementById("botFile").files[0];
+        var file_name = document.getElementById("botFile").files[0];
 
-                if (file_name != '') {
-                    var form_data = new FormData();
-                    form_data.append("botFile", file_name);
-                    form_data.append('folder', folder);
-                    $.ajax({
-                        url: "up.php",
-                        method: "POST",
-                        data: form_data,
-                        contentType: false,
-                        cache: false,
-                        processData: false,
-                        success: function(data) {
-                            console.log(data);
-                        }
-                    });
-
-                } else {
-                    console.log("Can't Upload!");
+        if (file_name != '') {
+            var form_data = new FormData();
+            form_data.append("botFile", file_name);
+            form_data.append('folder', folder);
+            $.ajax({
+                url: "up.php",
+                method: "POST",
+                data: form_data,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function(data) {
+                    console.log(data);
                 }
+            });
 
-            }
         } else {
-            console.log("You're not allowed!");
-            // window.location.href = "#custom";
+            console.log("Can't Upload!");
         }
-
     });
 
-    $("#humanFileBtn").click(function() {
-        if (localStorage.getItem("botpath") && localStorage.getItem("humanpath")) {
-            console.log("You're allowed!");
-            if (document.getElementById("humanFile").files.length == 0) {
-                console.log("no files selected");
-            } else {
-                console.log("files selected");
-                console.log(document.getElementById("humanFile").files[0].name);
-                $("#labelID2").text(document.getElementById("humanFile").files[0].name);
-                $("#humanPath2").show();
+    $('#humanFile').on("change", function() {
+        console.log(document.getElementById("humanFile").files[0].name);
+        $("#labelID2").text(document.getElementById("humanFile").files[0].name);
+        $("#humanPath2").show();
 
-                var file_name = document.getElementById("humanFile").files[0];
+        var file_name = document.getElementById("humanFile").files[0];
 
-                if (file_name != '') {
-                    var form_data = new FormData();
-                    form_data.append("humanFile", file_name);
-                    form_data.append('folder', folder);
-                    $.ajax({
-                        url: "up2.php",
-                        method: "POST",
-                        data: form_data,
-                        contentType: false,
-                        cache: false,
-                        processData: false,
-                        success: function(data) {
-                            console.log(data);
-                        }
-                    });
-
-                } else {
-                    console.log("Can't Upload!");
+        if (file_name != '') {
+            var form_data = new FormData();
+            form_data.append("humanFile", file_name);
+            form_data.append('folder', folder);
+            $.ajax({
+                url: "up2.php",
+                method: "POST",
+                data: form_data,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function(data) {
+                    console.log(data);
                 }
+            });
 
-            }
         } else {
-            console.log("You're not allowed!");
-            // window.location.href = "#custom";
+            console.log("Can't Upload!");
         }
     });
 
