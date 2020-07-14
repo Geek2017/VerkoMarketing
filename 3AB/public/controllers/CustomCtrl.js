@@ -1,8 +1,10 @@
 angular.module('newApp').controller('CustomCtrl', function($scope) {
 
     var adType = "5Sec";
-    var loader = "default";
+    var loader = "Default";
     var folder = "";
+
+    var modal = document.getElementById('pickModal');
 
     //radio button functions
     $("#theme1").click(function() {
@@ -183,6 +185,7 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                         // $("#humanBrowse").show();
 
                         var currentUrl = window.location.hostname;
+                        var modal = document.getElementById('pickModal');
                         // console.log(currentUrl);
                         var ref = firebase.database().ref("/datasets/adscount/");
 
@@ -257,12 +260,15 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
 
                         // $('#doneModal').modal('hide');
 
-                        $("#botBrowse").show();
-                        $("#humanBrowse").show();
-                        $("#botPath2").hide();
-                        $("#humanPath2").hide();
-                        $('#botPathName2').text("Choose file and Click Upload");
-                        $('#humanPathName2').text("Choose file and Click Upload");
+
+                        // $("#botBrowse").show();
+                        // $("#humanBrowse").show();
+                        // $("#botPath2").show();
+                        // $("#humanPath2").show();
+                        $('#botPathName2').text("Choose file");
+                        $('#humanPathName2').text("Choose file");
+                        modal.style.display = "block";
+                        $("#customFile").hide();
 
                         var a = document.getElementById("snackbar3");
                         a.className = "show";
@@ -347,6 +353,10 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
         $("#humanPath1").show();
         $("#botBrowse").hide();
         $("#humanBrowse").hide();
+
+        $("#botURL").hide();
+        $("#humanURL").hide();
+        $("#URLSave").hide();
         // $("#botPathText").prop("disabled", true);
         // $("#humanPathText").prop("disabled", true);
 
@@ -359,50 +369,142 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
         $("#botPath1").hide();
         $("#humanPath1").hide();
 
-        // var currentUrl = window.location.hostname;
-        // // console.log(currentUrl);
-        // var ref = firebase.database().ref("/datasets/adscount/");
-
-        // ref.orderByChild("domain").equalTo(currentUrl).once("value")
-        //     .then(function(snapshot) {
-
-        //         var exist = snapshot.exists();
-        //         var val = snapshot.val();
-        //         // var countNext = snapshot.val();
-
-        //         var key;
-
-        //         var valArray = Object.values(val);
-        //         if (!exist) {
-        //             ref.push({
-        //                     domain: currentUrl,
-        //                     count: 1
-        //                 })
-        //                 .then(function(data) {
-        //                     // console.log(data.key);
-        //                     ref.child(data.key).update({
-        //                         key: data.key
-        //                     })
-        //                 });
-        //         } else {
-
-        //             var countNext = valArray[0].count + 1;
-        //             var key = valArray[0].key;
-
-        //             // console.log(valArray[0].key);
-        //             // console.log(countNext);
-        //             ref.child(key).update({
-        //                 count: countNext
-        //             }).then(function(data) {
-        //                 console.log('Updated database!');
-        //             });
-        //         }
-        //     });
-
         // $("#botBrowse").show();
         // $("#humanBrowse").show();
         // $("#botPathText").prop("disabled", false);
         // $("#humanPathText").prop("disabled", false);
+    });
+
+    $("#uploadPick").click(function() {
+        modal.style.display = "none";
+        $("#customFile").show();
+        $("#botPath2").show();
+        $("#humanPath2").show();
+        $("#botURL").hide();
+        $("#humanURL").hide();
+        $("#URLSave").hide();
+
+    });
+
+    $("#urlPick").click(function() {
+        modal.style.display = "none";
+        $("#customFile").show();
+        $("#botPath2").hide();
+        $("#humanPath2").hide();
+        $("#botURL").show();
+        $("#humanURL").show();
+        $("#URLSave").show();
+    });
+
+    $("#close").click(function() {
+        modal.style.display = "none";
+        $("#customFile").show();
+
+    });
+
+    $("#URLSave").click(function() {
+        if (folder_name != '') {
+            $.ajax({
+                url: "dataPath.php",
+                method: "POST",
+                data: {
+                    adType: adType,
+                    loader: loader,
+                    folder_name: folder_name,
+                    action: action,
+                    copy: "copy"
+                },
+                success: function(data) {
+                    // $('#folderModal').modal('hide');
+                    load_folder_list();
+                    // alert(data);
+                    $('#folder_name2').val("");
+                    folder = folder_name;
+
+                    // $("#botBrowse").show();
+                    // $("#humanBrowse").show();
+
+                    var currentUrl = window.location.hostname;
+                    var modal = document.getElementById('pickModal');
+                    // console.log(currentUrl);
+                    var ref = firebase.database().ref("/datasets/adscount/");
+
+                    ref.orderByChild("domain").equalTo(currentUrl).once("value")
+                        .then(function(snapshot) {
+
+                            var exist = snapshot.exists();
+                            var val = snapshot.val();
+                            // var countNext = snapshot.val();
+
+
+                            if (!exist) {
+                                ref.push({
+                                        domain: currentUrl,
+                                        count: 1
+                                    })
+                                    .then(function(data) {
+                                        // console.log(data.key);
+                                        ref.child(data.key).update({
+                                            key: data.key
+                                        })
+                                    });
+                            } else {
+
+                                var valArray = Object.values(val);
+
+                                var countNext = valArray[0].count + 1;
+                                var key = valArray[0].key;
+
+                                // console.log(valArray[0].key);
+                                // console.log(countNext);
+                                ref.child(key).update({
+                                    count: countNext
+                                }).then(function(data) {
+                                    console.log('Updated database!');
+                                });
+                            }
+                        });
+
+
+
+                    // $('#doneModal').modal('hide');
+
+
+                    // $("#botBrowse").show();
+                    // $("#humanBrowse").show();
+                    // $("#botPath2").show();
+                    // $("#humanPath2").show();
+                    $('#botPathName2').text("Choose file");
+                    $('#humanPathName2').text("Choose file");
+                    modal.style.display = "block";
+                    $("#customFile").hide();
+
+                    var a = document.getElementById("snackbar3");
+                    a.className = "show";
+                    setTimeout(function() {
+                        a.className = a.className.replace("show", "");
+                    }, 3000);
+
+                    $('#botPathName2').text("public_html/" + folder_name + "/assets/ads/bot/");
+                    $('#humanPathName2').text("public_html/" + folder_name + "/assets/ads/human/");
+                    localStorage.setItem("botpath", folder_name + "/assets/ads/bot/");
+                    localStorage.setItem("humanpath", folder_name + "/assets/ads/human/");
+                    localStorage.setItem("folder_name", folder_name);
+                    var currentUrl = window.location.hostname;
+
+
+                    // document.cookie = folder_name + "/assets/ads/";
+                }
+            });
+        } else {
+            var b = document.getElementById("snackbar4");
+            b.className = "show";
+            setTimeout(function() {
+                b.className = b.className.replace("show", "");
+            }, 3000);
+            // alert("Enter Folder Name");
+        }
+
     });
 
     $('#botFile').on("change", function() {

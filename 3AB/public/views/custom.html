@@ -1,4 +1,101 @@
 <style>
+    /* The Modal (background) */
+    
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+    }
+    /* Modal Content/Box */
+    
+    .modal-content {
+        color: #414242;
+        margin: 15% auto;
+        /* 15% from the top and centered */
+        padding: 30px 60px;
+        width: 500px;
+        /* Could be more or less, depending on screen size */
+        font-family: Lato;
+        font-size: 16px;
+        line-height: 28px;
+        letter-spacing: 0.5px;
+        -webkit-font-smoothing: antialiased;
+        /* Rectangle 2 Copy 3: */
+        background: #FFFFFF;
+        border: 1px solid #9B9C9D;
+        box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.20);
+        border-radius: 6px;
+    }
+    
+    .modal-content a {
+        color: #636464;
+    }
+    
+    .modal-content>h1 {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    
+    button#accept {
+        margin: 30px auto;
+        display: block;
+        border: 1px solid #fc4c02;
+        border-radius: 3px;
+        background: #fff;
+        color: #fc4c02;
+        font-size: 16px;
+        height: 48px;
+        padding: 0 20px;
+        cursor: pointer;
+    }
+    
+    .safety {
+        color: #9B9C9D;
+        font-size: 12px;
+        text-align: center;
+        display: block;
+        text-decoration: none;
+    }
+    
+    .close {
+        background: #606061;
+        color: #FFFFFF;
+        line-height: 25px;
+        position: absolute;
+        right: -12px;
+        text-align: center;
+        top: -10px;
+        width: 24px;
+        text-decoration: none;
+        font-weight: bold;
+        -webkit-border-radius: 12px;
+        -moz-border-radius: 12px;
+        border-radius: 12px;
+        -moz-box-shadow: 1px 1px 3px #000;
+        -webkit-box-shadow: 1px 1px 3px #000;
+        box-shadow: 1px 1px 3px #000;
+    }
+    
+    .close:hover {
+        background: #00d9ff;
+    }
+    
     .responsive {
         width: 100%;
         height: auto;
@@ -606,6 +703,32 @@
                 </div>
             </div> -->
 
+            <div style="display: none;" id="botURL" class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="botURLPath">Bot URL Path</span>
+                </div>
+                <div class="custom-file">
+                    <input type="text" class="form-control" name="botURLPathText" id="botPathText2" aria-describedby="basic-addon3" placeholder="(e.g. www.bot.com)">
+                    <!-- <button type="button" name="botURLSave" id="botURLSave" class="btn btn-danger" style="float: right;">Save</button> -->
+                </div>
+            </div>
+            <br>
+
+            <div style="display: none;" id="humanURL" class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="humanURLPath">Human URL Path</span>
+                </div>
+                <div class="custom-file">
+                    <input type="text" class="form-control" name="humanURLPathText" id="humanPathText2" aria-describedby="basic-addon3" placeholder="(e.g. www.human.com)">
+                    <!-- <button type="button" name="humanURLSave" id="humanURLSave" class="btn btn-danger" style="float: right;">Save</button> -->
+                </div>
+            </div>
+            <br>
+            <div style="display: none;" id="URLSave">
+                <button type="button" name="URLSave" id="URLSave" class="btn btn-danger" style="float: right;">Save</button>
+            </div>
+
+
             <div style="display: none;" id="botBrowse" class="input-group">
                 <label for="exampleInputFile">Upload Bot File (zip/rar format)</label>
                 <div class="input-group">
@@ -656,6 +779,8 @@
                 </div>
             </div>
             <br>
+
+
 
 
             <!-- <div class="input-group input-group">
@@ -737,6 +862,30 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- The Modal -->
+<div id="pickModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Custom</h4>
+            <button type="button" id="close">&times;</button>
+
+        </div>
+        <div class="modal-body">
+
+            <p>What type of Custom path do you want?</p>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" id="uploadPick">Upload File</button>
+            <button type="button" class="btn btn-info" id="urlPick">URL</button>
+        </div>
+    </div>
+
+
 </div>
 
 <!-- <div id="folderModal" class="modal fade" role="dialog">

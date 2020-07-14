@@ -123,11 +123,11 @@ if ($copy == "copy"){
         $src = "./Structure/5Sec"; 
     } else if ($_POST["adType"] == "Loader"){
         if($_POST["loader"] == "Default"){
-            $src = "./Structure/Loader/Default"; 
+            $src = "./Structure/Loader/DefaultLoader"; 
         } else if($_POST["loader"] == "Circle 1"){
-            $src = "./Structure/Loader/Circle 1"; 
+            $src = "./Structure/Loader/Circle1Loader"; 
         } else if($_POST["loader"] == "Circle 2"){
-            $src = "./Structure/Loader/Circle 2"; 
+            $src = "./Structure/Loader/Circle2Loader"; 
         }
         
     } else if ($_POST["adType"] == "ReadMore"){
