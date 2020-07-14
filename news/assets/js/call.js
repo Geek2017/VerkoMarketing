@@ -69,7 +69,7 @@ new jmbotdetector({
 
                     $(window).attr('location', bot)
 
-                }, 3000);
+                }, 300);
             }
         })
 
