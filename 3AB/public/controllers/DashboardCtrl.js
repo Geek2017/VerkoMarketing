@@ -98,10 +98,10 @@ angular.module('newApp').controller('DashboardCtrl', function($scope) {
             $('#traffic').text(bc.length + hc.length)
         });
 
-        var ref = firebase.database().ref("/datasets/domain/");
-        ref.orderByChild("url").equalTo(currentUrl).on("child_added", function(snapshot) {
-            console.log("Data:", snapshot.val());
-
+        var ref = firebase.database().ref("/datasets/adscount");
+        ref.orderByChild("domain").equalTo(currentUrl).on("child_added", function(snapshot) {
+            console.log("Data:", snapshot.val().count);
+            $('#Campaign').text(snapshot.val().count);
         });
 
 

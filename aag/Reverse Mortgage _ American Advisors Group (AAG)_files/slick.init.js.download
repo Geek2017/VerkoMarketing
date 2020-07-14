@@ -1,5 +1,0 @@
-$('.reviews-slider').slick({
-  arrows: true,
-  prevArrow: $('.prev'),
-  nextArrow: $('.next'),
-});
