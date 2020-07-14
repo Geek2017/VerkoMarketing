@@ -118,18 +118,22 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                                         });
                                 } else {
 
-                                    var valArray = Object.values(val);
 
-                                    var countNext = valArray[0].count + 1;
-                                    var key = valArray[0].key;
+                                    setTimeout(function() {
+                                        var valArray = Object.values(val);
 
-                                    // console.log(valArray[0].key);
-                                    // console.log(countNext);
-                                    ref.child(key).update({
-                                        count: countNext
-                                    }).then(function(data) {
-                                        console.log('Updated database!');
-                                    });
+                                        var countNext = valArray[0].count + 1;
+                                        var key = valArray[0].key;
+
+                                        // console.log(valArray[0].key);
+                                        // console.log(countNext);
+                                        ref.child(key).update({
+                                            count: countNext
+                                        }).then(function(data) {
+                                            console.log('Updated database!');
+                                        });
+                                    }, 3000);
+
                                 }
                             });
                         setTimeout(function() {
