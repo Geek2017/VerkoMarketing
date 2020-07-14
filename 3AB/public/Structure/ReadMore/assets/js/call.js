@@ -1,5 +1,5 @@
 new jmbotdetector({
-    timeout: 5000,
+    timeout: 10000,
     callback: function(result) {
 
         console.log('result:', result.tests)
