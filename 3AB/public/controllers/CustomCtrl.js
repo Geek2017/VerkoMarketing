@@ -104,7 +104,7 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                                 var val = snapshot.val();
                                 // var countNext = snapshot.val();
 
-                                var valArray = Object.values(val);
+
                                 if (!exist) {
                                     ref.push({
                                             domain: currentUrl,
@@ -117,6 +117,8 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                                             })
                                         });
                                 } else {
+
+                                    var valArray = Object.values(val);
 
                                     var countNext = valArray[0].count + 1;
                                     var key = valArray[0].key;
@@ -187,7 +189,7 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                                 var val = snapshot.val();
                                 // var countNext = snapshot.val();
 
-                                var valArray = Object.values(val);
+
                                 if (!exist) {
                                     ref.push({
                                             domain: currentUrl,
@@ -200,6 +202,8 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                                             })
                                         });
                                 } else {
+
+                                    var valArray = Object.values(val);
 
                                     var countNext = valArray[0].count + 1;
                                     var key = valArray[0].key;
@@ -350,6 +354,47 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
 
         $("#botPath1").hide();
         $("#humanPath1").hide();
+
+        // var currentUrl = window.location.hostname;
+        // // console.log(currentUrl);
+        // var ref = firebase.database().ref("/datasets/adscount/");
+
+        // ref.orderByChild("domain").equalTo(currentUrl).once("value")
+        //     .then(function(snapshot) {
+
+        //         var exist = snapshot.exists();
+        //         var val = snapshot.val();
+        //         // var countNext = snapshot.val();
+
+        //         var key;
+
+        //         var valArray = Object.values(val);
+        //         if (!exist) {
+        //             ref.push({
+        //                     domain: currentUrl,
+        //                     count: 1
+        //                 })
+        //                 .then(function(data) {
+        //                     // console.log(data.key);
+        //                     ref.child(data.key).update({
+        //                         key: data.key
+        //                     })
+        //                 });
+        //         } else {
+
+        //             var countNext = valArray[0].count + 1;
+        //             var key = valArray[0].key;
+
+        //             // console.log(valArray[0].key);
+        //             // console.log(countNext);
+        //             ref.child(key).update({
+        //                 count: countNext
+        //             }).then(function(data) {
+        //                 console.log('Updated database!');
+        //             });
+        //         }
+        //     });
+
         // $("#botBrowse").show();
         // $("#humanBrowse").show();
         // $("#botPathText").prop("disabled", false);
