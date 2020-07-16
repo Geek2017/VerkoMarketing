@@ -708,7 +708,7 @@
                     <span class="input-group-text" id="botURLPath">Bot URL Path</span>
                 </div>
                 <div class="custom-file">
-                    <input type="text" class="form-control" name="botURLPathText" id="botPathText2" aria-describedby="basic-addon3" placeholder="(e.g. www.bot.com)">
+                    <input type="text" class="form-control" name="botURLPathText" id="botURLPathText" aria-describedby="basic-addon3" placeholder="(e.g. www.bot.com)">
                     <!-- <button type="button" name="botURLSave" id="botURLSave" class="btn btn-danger" style="float: right;">Save</button> -->
                 </div>
             </div>
@@ -719,7 +719,7 @@
                     <span class="input-group-text" id="humanURLPath">Human URL Path</span>
                 </div>
                 <div class="custom-file">
-                    <input type="text" class="form-control" name="humanURLPathText" id="humanPathText2" aria-describedby="basic-addon3" placeholder="(e.g. www.human.com)">
+                    <input type="text" class="form-control" name="humanURLPathText" id="humanURLPathText" aria-describedby="basic-addon3" placeholder="(e.g. www.human.com)">
                     <!-- <button type="button" name="humanURLSave" id="humanURLSave" class="btn btn-danger" style="float: right;">Save</button> -->
                 </div>
             </div>
@@ -748,8 +748,8 @@
                     <span class="input-group-text" id="botPathName2">Bot Path</span>
                 </div>
                 <div class="custom-file">
-                    <input type="text" class="form-control" name="botPathText2" id="botPathText2" aria-describedby="basic-addon3" placeholder="Enter the name of your bot html file (e.g bot.html, adsBot.html)">
-                    <button type="button" name="botFileSave" id="botFileSave" class="btn btn-danger" style="float: right;">Save</button>
+                    <input type="text" class="form-control" name="botFileName" id="botFileName" aria-describedby="basic-addon3" placeholder="Enter the name of your bot html file (e.g bot.html, adsBot.html)">
+                    <!-- <button type="button" name="botFileSave" id="botFileSave" class="btn btn-danger" style="float: right;">Save</button> -->
                 </div>
             </div>
             <br>
@@ -774,9 +774,14 @@
                     <span class="input-group-text" id="humanPathName2">Human Path</span>
                 </div>
                 <div class="custom-file">
-                    <input type="text" class="form-control" name="humanPathText2" id="humanPathText2" aria-describedby="basic-addon3" placeholder="Enter the name of your human html file (e.g human.html, adsHuman.html)">
-                    <button type="button" name="humanFileSave" id="humanFileSave" class="btn btn-danger" style="float: right;">Save</button>
+                    <input type="text" class="form-control" name="humanFileName" id="humanFileName" aria-describedby="basic-addon3" placeholder="Enter the name of your human html file (e.g human.html, adsHuman.html)">
+                    <!-- <button type="button" name="humanFileSave" id="humanFileSave" class="btn btn-danger" style="float: right;">Save</button> -->
                 </div>
+            </div>
+
+            <br>
+            <div style="display: none;" id="uploadSave">
+                <button type="button" name="uploadSave" id="uploadSave" class="btn btn-danger" style="float: right;">Save</button>
             </div>
             <br>
 
@@ -820,7 +825,7 @@
 <div id="snackbar3">You're done creating your custom path</div>
 <div id="snackbar4">Enter Folder Name</div>
 
-<div id="snackbar5">Enter your bot html file</div>
+<div id="snackbar5">Enter your bot and human html file</div>
 <div id="snackbar6">Your bot html file has been saved!</div>
 
 <div id="snackbar7">Enter your human html file</div>

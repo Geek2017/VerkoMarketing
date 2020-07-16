@@ -2,13 +2,13 @@
 
 $jsonString = file_get_contents('data.json');
 $data = json_decode($jsonString, true);
-$botFileName = $_POST["botFileName"];
-$humanFileName = $_POST["humanFileName"];
+$botURLPathText = $_POST["botURLPathText"];
+$humanURLPathText = $_POST["humanURLPathText"];
 $folder = $_POST["folder"];
 
 $data['id'] = 1;
-$data['bot'] = "./bot/" . $botFileName;
-$data['human'] = "./human/" . $humanFileName;
+$data['bot'] = $botURLPathText;
+$data['human'] = $humanURLPathText;
 
 
 $newJsonString = json_encode($data);

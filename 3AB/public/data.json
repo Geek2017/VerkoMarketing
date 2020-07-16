@@ -1,5 +1,1 @@
-{
-    "id": 1,
-    "bot": "./bot",
-    "human": "./human"
-}
+{"id":1,"bot":"www.bot.com","human":"www.human.com"}
