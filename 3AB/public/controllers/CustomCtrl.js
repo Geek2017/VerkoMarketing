@@ -225,57 +225,16 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
                                     });
                                 }
                             });
-
-                        // var ref = firebase.database().ref("/datasets/adscount/");
-
-                        // ref.once("value")
-                        //     .then(function(snapshot) {
-                        //         //check if exist
-                        //         var r = snapshot.child(currentUrl).exists();
-                        //         if (r !== true) {
-                        //             console.log("Dont Exists");
-                        //             ref.child(currentUrl).set({
-                        //                     count: 1
-                        //                 })
-                        //                 .then(function(ref) {
-                        //                     console.log('Added to database');
-                        //                 });
-                        //         } else {
-                        //             console.log("Exists");
-                        //             ref.child(currentUrl).once("value", function(snapshot) {
-                        //                 var countNext = snapshot.val().count;
-                        //                 countNext = countNext + 1;
-                        //                 // console.log(countNext);
-                        //                 ref.child(currentUrl).update({
-                        //                         count: countNext
-                        //                     })
-                        //                     .then(function(data) {
-                        //                         console.log('Updated database!');
-                        //                     });
-                        //             }, function(error) {
-                        //                 console.log("Error: " + error.code);
-                        //             });
-                        //         }
-
-                        //     });
-
-                        // $('#doneModal').modal('hide');
-
-
-                        // $("#botBrowse").show();
-                        // $("#humanBrowse").show();
-                        // $("#botPath2").show();
-                        // $("#humanPath2").show();
                         $('#botPathName2').text("Choose file");
                         $('#humanPathName2').text("Choose file");
                         modal.style.display = "block";
                         $("#customFile").hide();
 
-                        var a = document.getElementById("snackbar3");
-                        a.className = "show";
-                        setTimeout(function() {
-                            a.className = a.className.replace("show", "");
-                        }, 3000);
+                        // var a = document.getElementById("snackbar3");
+                        // a.className = "show";
+                        // setTimeout(function() {
+                        //     a.className = a.className.replace("show", "");
+                        // }, 3000);
 
                         $('#botPathName2').text("public_html/" + folder_name + "/assets/ads/bot/");
                         $('#humanPathName2').text("public_html/" + folder_name + "/assets/ads/human/");
@@ -411,7 +370,7 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
     $("#URLSave").click(function() {
         var botURLPathText = $('#botURLPathText').val();
         var humanURLPathText = $('#humanURLPathText').val();
-        if (folder_name != '') {
+        if (botURLPathText != '' && humanURLPathText != '') {
             $.ajax({
                 url: "dataPath2.php",
                 method: "POST",
@@ -424,19 +383,20 @@ angular.module('newApp').controller('CustomCtrl', function($scope) {
 
                     console.log(data);
 
-                    var b = document.getElementById("snackbar4");
-                    b.className = "show";
+                    var a = document.getElementById("snackbar3");
+                    a.className = "show";
                     setTimeout(function() {
-                        b.className = b.className.replace("show", "");
+                        a.className = a.className.replace("show", "");
                     }, 3000);
                 }
             });
         } else {
-            var a = document.getElementById("snackbar3");
-            a.className = "show";
+            var b = document.getElementById("snackbar4");
+            b.className = "show";
             setTimeout(function() {
-                a.className = a.className.replace("show", "");
+                b.className = b.className.replace("show", "");
             }, 3000);
+
             // alert("Enter Folder Name");
         }
 
