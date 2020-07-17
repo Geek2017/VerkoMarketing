@@ -11,7 +11,7 @@ $data['bot'] = "./bot/" . $botFileName;
 $data['human'] = "./human/" . $humanFileName;
 
 
-$newJsonString = json_encode($data);
+$newJsonString = json_encode($data, JSON_UNESCAPED_SLASHES);
 file_put_contents('data.json', $newJsonString);
 
 $srcfile='./data.json';

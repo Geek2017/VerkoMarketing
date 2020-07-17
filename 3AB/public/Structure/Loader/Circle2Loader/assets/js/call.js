@@ -16,7 +16,7 @@ new jmbotdetector({
 
                 $('#loader loader-inner-1').hide();
                 $('#loader loader-inner-2').hide();
-                $('loader loader-inner-3').hide();
+                $('#loader loader-inner-3').hide();
 
                 $("#preloader1").replaceWith("<div class='second-row'><iframe src='" + human + "'></iframe></div>");
             } else {
