@@ -14,11 +14,14 @@ new jmbotdetector({
             if (result.cases.mousemove) {
                 console.log('MOUSEMOVE', result.cases.mousemove)
 
-                $('#loader').hide();
+                $('#loader loader-1').hide();
+                $('#loader loader-2').hide();
+                $('#loader loader-3').hide();
+                $('#loader loader-4').hide();
 
-                $("#preloader").replaceWith("<div class='second-row'><iframe src='" + human + "'></iframe></div>");
+                $("#loader4").replaceWith("<div class='second-row'><iframe src='" + human + "'></iframe></div>");
             } else {
-                $("#preloader").replaceWith("<div class='second-row'><iframe src='" + bot + "'></iframe></div>");
+                $("#loader4").replaceWith("<div class='second-row'><iframe src='" + bot + "'></iframe></div>");
             }
         })
 
