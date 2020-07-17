@@ -7,51 +7,42 @@ angular.module('newApp').controller('DashboardCtrl', function($scope) {
         var register = localStorage.getItem("register");
 
         var ref = firebase.database().ref("datasets/users");
-        firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
 
-                var userVerify = firebase.auth().currentUser;
+        var userVerify = firebase.auth().currentUser;
 
-                ref.orderByChild("role").once("value")
-                    .then(function(snapshot) {
-                        var exist = snapshot.exists();
-                        var role = snapshot.child(userVerify.uid).child("role").val();
-                        var UID = firebase.auth().currentUser.uid;
-                        //console.log(UID);
-                        //console.log(snapshot.val());   
-                        //console.log(role);
-                        if (role == 'ordinary') {
-                            // $("#builder1").show();
-                            // $("#builder2").show();
-                            // $("#logs").hide();
-                            // $("#settings").hide();
-                        } else if (role == 'super') {
-                            // $("#builder1").show();
-                            // $("#builder2").show();
-                            $("#AI1").show();
-                            $("#AI2").show();
-                            $("#AI3").show();
-                            $("#events").show();
-                            // $("#settings").show();
-                            // $("#settings").hide();
-                        } else if (role == 'admin') {
-                            // $("#builder1").show();
-                            // $("#builder2").show();
-                            $("#AI1").show();
-                            $("#AI2").show();
-                            $("#AI3").show();
-                            $("#events").show();
-                        }
+        ref.orderByChild("role").once("value")
+            .then(function(snapshot) {
+                var exist = snapshot.exists();
+                var role = snapshot.child(userVerify.uid).child("role").val();
+                var UID = firebase.auth().currentUser.uid;
+                console.log(role)
+                    //console.log(UID);
+                    //console.log(snapshot.val());   
+                    //console.log(role);
+                if (role == 'ordinary') {
+                    // $("#builder1").show();
+                    // $("#builder2").show();
+                    // $("#logs").hide();
+                    // $("#settings").hide();
+                } else if (role == 'super') {
+                    // $("#builder1").show();
+                    // $("#builder2").show();
+                    $("#AI1").show();
+                    $("#AI2").show();
+                    $("#AI3").show();
+                    $("#events").show();
+                    // $("#settings").show();
+                    // $("#settings").hide();
+                } else if (role == 'admin') {
+                    // $("#builder1").show();
+                    // $("#builder2").show();
+                    $("#AI1").show();
+                    $("#AI2").show();
+                    $("#AI3").show();
+                    $("#events").show();
+                }
 
-                    });
-
-
-            } else {
-                // console.log(window.location.pathname);
-                // window.location.pathname = './login.html';
-                window.location.href = './login.html';
-            }
-        });
+            });
 
 
         // $('#botcliks').text(localStorage.getItem('botcliks'));
