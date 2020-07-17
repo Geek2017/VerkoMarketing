@@ -7,8 +7,8 @@ $humanFileName = $_POST["humanFileName"];
 $folder = $_POST["folder"];
 
 $data['id'] = 1;
-$data['bot'] = "./bot/" . $botFileName;
-$data['human'] = "./human/" . $humanFileName;
+$data['bot'] = "./assets/ads/bot/" . $botFileName;
+$data['human'] = "./assets/ads/human/" . $humanFileName;
 
 
 $newJsonString = json_encode($data, JSON_UNESCAPED_SLASHES);
