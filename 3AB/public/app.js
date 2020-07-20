@@ -7,6 +7,10 @@ angular
                 templateUrl: 'views/Dashboard.html',
                 controller: 'DashboardCtrl'
             })
+            .when('/profile', {
+                templateUrl: 'views/Profile.html',
+                controller: 'ProfileCtrl'
+            })
             .when('/custom', {
                 templateUrl: 'views/custom.html',
                 controller: 'CustomCtrl'
